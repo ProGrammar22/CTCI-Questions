@@ -1,6 +1,9 @@
-﻿using System.Runtime.CompilerServices;
+﻿using System;
+using System.Collections;
+using System.Globalization;
+using System.Runtime.CompilerServices;
 using System.Text;
-using static System.Net.Mime.MediaTypeNames;
+using static System.Reflection.Metadata.BlobBuilder;
 
 
 //                                                                   CHAPTER 1: ARRAYS & STRINGS
@@ -3594,9 +3597,7 @@ class Poison
 //                                                                   CHAPTER 7: OBJECT-ORIENTED DESIGN
 
 
-// Q52: Deck of Cards: Design the data structures for a generic deck of cards. Explain how you would subclass the data structures to implement blackjack.
-
-// Time complexity O(n), Space complexity O(n)
+// Q52: Deck of Cards: Design the data structures for a generic deck of cards. Explain how you would subclass the data structures to implement blackjack. (FHQ)
 
 class DeckOfCards
 {
@@ -3725,8 +3726,6 @@ class DeckOfCards
 
 
 // Q53: Call Center: Imagine you have a call center with three levels of employees: respondent, manager, and director. An incoming telephone call must be first allocated to a respondent who is free. If therespondent can't handle the call, he or she must escalate the call to a manager. If the manager is not free or not able to handle it, then the call should be escalated to a director. Design the classes and data structures for this problem. Implement a method dispatchCall() which assigns a call to the first available employee. (FHQ)
-
-// Time complexity O(n), Space complexity O(n)
 
 class CallCenter
 {
@@ -3939,9 +3938,7 @@ class CallCenter
     }
 }
 
-// Q54: Jukebox: Design a musical jukebox using object-oriented principles.
-
-// Time complexity O(1), Space complexity O(n)
+// Q54: Jukebox: Design a musical jukebox using object-oriented principles. (FHQ)
 
 class Jukebox
 {
@@ -4151,9 +4148,7 @@ class Jukebox
 }
 
 
-// Q55: Parking Lot: Design a parking lot using object-oriented principles.
-
-// Time complexity O(n), Space complexity O(n)
+// Q55: Parking Lot: Design a parking lot using object-oriented principles. (FHQ)
 
 class ParkingLot
 {
@@ -4405,9 +4400,7 @@ class ParkingLot
 }
 
 
-// Q56: Online Book Reader: Design the data structures for an online book reader system.
-
-// Time complexity O(n), Space complexity O(n)
+// Q56: Online Book Reader: Design the data structures for an online book reader system. (FHQ)
 
 class OnlineBookReader
 {
@@ -4754,9 +4747,7 @@ class OnlineBookReader
 }
 
 
-// Q57: Jigsaw: Implement an NxN jigsaw puzzle. Design the data structures and explain an algorithm to solve the puzzle.You can assume that you have a fitsWith method which, when passed two puzzle edges, returns true if the two edges belong together.
-
-// Time and space complexity dependent on the size of the puzzle
+// Q57: Jigsaw: Implement an NxN jigsaw puzzle. Design the data structures and explain an algorithm to solve the puzzle.You can assume that you have a fitsWith method which, when passed two puzzle edges, returns true if the two edges belong together. (FHQ)
 
 // Defines the possible orientations for the edges of a puzzle piece
 public enum Orientation
@@ -4925,9 +4916,1388 @@ public class Edge
 }
 
 
-// Q58: Chat Server: Explain how you would design a chat server. In particular, provide details about the various backend components, classes, and methods. What would be the hardest problems to solve?
+// Q58: Chat Server: Explain how you would design a chat server. In particular, provide details about the various backend components, classes, and methods. What would be the hardest problems to solve? (FHQ)
 
 class ChatServer
+{
+    // Singleton Class responsible for managing users in the system
+    public class UserManager
+    {
+        private static UserManager instance;
+
+        // To keep track of users by their ID
+        private Dictionary<int, User> usersById;
+
+        // To keep track of users by their online status
+        private Dictionary<int, User> onlineUsers;
+
+        // To keep track of users by their account name
+        private Dictionary<string, User> usersByAccountName;
+
+        public static UserManager Instance()
+        {
+            if (instance == null)
+            {
+                instance = new UserManager();
+            }
+            return instance;
+        }
+
+        // Mehtod to add a user to the user manager
+        public void AddUser(User fromUser, string toAccountName)
+        {
+            // ...
+        }
+
+        // Method to approve an add request
+        public void ApproveAddRequest(AddRequest req)
+        {
+            // ...
+        }
+
+        // Method to reject an add request
+        public void RejectAddRequest(AddRequest req)
+        {
+            // ...
+        }
+
+        // Method to handle signed on users
+        public void UsersSignedOn(string accountName)
+        {
+            // ...
+        }
+
+        // Method to handle signed off users
+        public void UsersSignedOff(string accountName)
+        {
+            // ...
+        }
+    }
+
+    // Represents a user in the system
+    public class User
+    {
+        // Represents user's id
+        private int id;
+
+        // Represents user's status
+        private UserStatus status = null;
+
+        // To keep track of the user's private chats
+        private Dictionary<int, PrivateChat> privateChats;
+
+        // To keep track of the user's received add requests
+        private Dictionary<int, AddRequest> receivedAddRequests;
+
+        // To keep track of the user's sent add requests
+        private Dictionary<int, AddRequest> sentAddRequests;
+
+        // To keep track of the user's contacts
+        private Dictionary<int, User> contacts;
+
+        private List<GroupChat> groupChats;
+
+        // Represents user's account name
+        private string accountName;
+
+        // Represents user's full name
+        private string fullName;
+
+        // Constructor
+        private User(int id, string accountName, string fullName)
+        {
+            // ...
+        }
+
+        // Method to set the user's status
+        private void SetStatus(UserStatus status)
+        {
+            // ...
+        }
+
+        // Method to handle the user's received add requests
+        private void ReceivedAddRequest(AddRequest req)
+        {
+            // ...
+        }
+
+        // Method to handle the user's sent add requests
+        private void SentAddRequest(AddRequest req)
+        {
+            // ...
+        }
+
+        // Method to remove add requests from the user's account
+        private void RemoveAddRequest(AddRequest req)
+        {
+            // ...
+        }
+
+        // Method to approve an add request
+        private void RequestAddUser(string accounName)
+        {
+
+        }
+
+        // Method to handle user's private chat messages
+        private void AddConversation(PrivateChat conversation)
+        {
+            // ...
+        }
+
+        // Method to handle user's group chat messages
+        private void AddConversation(GroupChat conversation)
+        {
+            // ...
+        }
+
+        // Method to get the user's status
+        private UserStatus GetStatus()
+        {
+            return null;
+        }
+
+        // Method to send messages to other users
+        private bool SendMessageToUser(User to, string content)
+        {
+            return true;
+        }
+
+        // Method to send messages to other group chats
+        private bool SendMessageToGroup(int id, string cnt)
+        {
+            return true;
+        }
+
+        // Method to add contacts in user's account
+        private bool AddContact(User user)
+        {
+            return true;
+        }
+
+        // Method to get the user's ID
+        private int GetId()
+        {
+            return 0;
+        }
+
+        // Method to get the user's account name
+        private string GetAccountName()
+        {
+            return "";
+        }
+
+        // Method to get the user's full name
+        private string GetFullName()
+        {
+            return "";
+        }
+    }
+
+    // Represents a conversation between users
+    public abstract class Conversation
+    {
+        // List of participants in the conversation
+        protected List<User> participants;
+
+        // List of messages in the conversation
+        protected List<Message> messages;
+
+        protected int id;
+
+        // Method to get the messages in the conversation
+        public List<Message> GetMessages()
+        {
+            return null;
+        }
+
+        // Method to add new messages to the conversation
+        public bool AddMessage(Message m)
+        {
+            return true;
+        }
+
+        public int GetId()
+        {
+            return 0;
+        }
+    }
+
+    // Represents a group chat between multiple users
+    public class GroupChat : Conversation
+    {
+        // Method remove participants from the group chat
+        public void RemoveParticipant(User user)
+        {
+            // ...
+        }
+
+        // Method to add participants to the group chat
+        public void AddParticipant(User user)
+        {
+            // ...
+        }
+    }
+
+    // Represents a private chat between two users
+    public class PrivateChat : Conversation
+    {
+        // Constructor
+        public PrivateChat(User user1, User user2)
+        {
+            // ...
+        }
+
+        // Method to get the other participant in the chat
+        public User GetOtherParticipant(User primary)
+        {
+            // ...
+            return null;
+        }
+    }
+
+    // Represents a message in a conversation
+    public class Message
+    {
+        // Represents the content of the message
+        private string content;
+
+        // Represents the date the message was sent on
+        private DateTime date;
+
+        // Constructor
+        public Message(string content, DateTime date)
+        {
+            // ...
+        }
+
+        // Method to get the content of the message
+        public string GetContent()
+        {
+            return "";
+        }
+
+        // Method to get the date the message was sent on
+        public DateTime GetDate()
+        {
+            return DateTime.Now;
+        }
+    }
+
+    // Represents an add request between two users
+    public class AddRequest
+    {
+        // Represents the sender of the add request
+        private User fromUser;
+
+        // Represents the receiver of the add request
+        private User toUser;
+
+        // Represents the status of the add request
+        private RequestStatus status;
+
+        // Represents the date the add request was sent on
+        private DateTime date;
+
+        // Constructor
+        public AddRequest(User from, User toUser, DateTime date)
+        {
+            // ...
+        }
+
+        // Method to get the sender of the add request
+        public User GetFromUser()
+        {
+            return null;
+        }
+
+        // Method to get the receiver of the add request
+        public User GetToUser()
+        {
+            return null;
+        }
+
+        // Method to get the status of the add request
+        public RequestStatus GetStatus()
+        {
+            return RequestStatus.Unread;
+        }
+
+        // Method to get the date the add request was sent on
+        public DateTime GetDate()
+        {
+            return DateTime.Now;
+        }
+    }
+
+    // Represents the status of a user
+    public class UserStatus
+    {
+        // Represents an otional message to be displayed on the status
+        private string message;
+
+        // Represents the status type to be displayed
+        private UserStatusType type;
+
+        // Constructor
+        public UserStatus(UserStatusType type, string message)
+        {
+            // ...
+        }
+
+        // Method to get the status type being displayed
+        public UserStatusType GetStatusType()
+        {
+            return UserStatusType.Offline;
+        }
+
+        // Method to get the optional message being diplayed
+        public string GetMessage()
+        {
+            return "";
+        }
+    }
+
+    // Represents the available status types for the users
+    public enum UserStatusType { Offline, Away, Idle, Available, Busy }
+
+    // Represents the status of the add requests in the user's account
+    public enum RequestStatus { Unread, Read, Accepted, Rejected }
+}
+
+
+// Q59: Othello: Othello is played as follows: Each Othello piece is white on one side and black on the other. When a piece is surrounded by its opponents on both the left and right sides, or both the top and bottom, it is said to be captured and its color is flipped. On your turn, you must capture at least one of your opponent's pieces. The game ends when either user has no more valid moves. The win is assigned to the person with the most pieces. Implement the object-oriented design for Othello. (FHQ)
+
+class Othello
+{
+    // Represents the possible directions in the game
+    public enum Direction { left, right, up, down }
+
+    // Represents the color of the player's pieces in the game
+    public enum Color { White, Black }
+
+    // Singleton class that represents the game
+    public class Game
+    {
+        private static Game instance;
+
+        // Represents the players in the game
+        private Player[] players;
+
+        // Represents the game board
+        private Board board;
+
+        // Represents the rows and columns on the game board
+        private int rows = 10;
+        private int columns = 10;
+
+        // Constructor
+        private Game()
+        {
+            board = new Board(rows, columns);
+            players = new Player[2];
+            players[0] = new Player(Color.Black);
+            players[1] = new Player(Color.White);
+        }
+
+        // Method that returns the single instance of the class
+        public static Game GetInstance()
+        {
+            if (instance == null)
+            {
+                instance = new Game();
+            }
+            return instance;
+        }
+
+        // Method that returns the game board
+        public Board GetBoard()
+        {
+            return board;
+        }
+    }
+
+    // Represents the game board
+    public class Board
+    {
+        // To keep track of the black and white pieces on the game board
+        private int blackCount = 0;
+        private int whiteCount = 0;
+
+        // Represents the pieces on the board
+        private Piece[,] board;
+
+        // Constructor
+        public Board(int rows, int columns)
+        {
+            board = new Piece[rows, columns];
+        }
+
+        // Method to initialize the game board
+        public void Initialize()
+        {
+            // ...
+        }
+
+        // Method to update the count of pieces on the game board for each player
+        public void UpdateScore(Color newColor, int newPieces)
+        {
+            // ...
+        }
+
+        // Method that checks whether or not a piece of the given color can be placed at the given position on the board
+        public bool PlaceColor(int row, int column, Color color)
+        {
+            return false;
+        }
+
+        // Method that returns the number of pieces for a player on the board
+        public int GetScoreForColor(Color c)
+        {
+            if (c == Color.Black)
+            {
+                return blackCount;
+            }
+            else
+            {
+                return whiteCount;
+            }
+        }
+
+        // Method to flip pieces on the board in a direction
+        private int FlipSection(int row, int column, Color color, Direction d)
+        {
+            // ...
+
+            return 0;
+        }
+    }
+
+    // Represents a single piece on the board
+    public class Piece
+    {
+        // Represents the color of the piece
+        private Color color;
+
+        // Constructor
+        public Piece(Color c)
+        {
+            color = c;
+        }
+
+        // Method that changes the color of the piece from black to white or vice versa
+        public void Flip()
+        {
+            if (color == Color.Black)
+            {
+                color = Color.White;
+            }
+            else
+            {
+                color = Color.Black;
+            }
+        }
+
+        // Method that returns the color of the piece
+        public Color GetColor()
+        {
+            return color;
+        }
+    }
+
+    // Represents a player in the game
+    public class Player
+    {
+        // Represents the color of the player’s pieces
+        private Color color;
+
+        // Constructor
+        public Player(Color c)
+        {
+            color = c;
+        }
+
+        // Method to get the score for the current player
+        public int GetScore()
+        {
+            // ...
+
+            return 0;
+        }
+
+        // Method that attempts to place a piece of the player’s color at the given position on the board
+        public bool PlayPiece(int r, int c)
+        {
+            return Game.GetInstance().GetBoard().PlaceColor(r, c, color);
+        }
+
+        // Method that returns the color of the player’s pieces
+        public Color GetColor()
+        {
+            return color;
+        }
+    }
+}
+
+
+// Q60: Circular Array: Implement a CircularArray class that supports an array-like data structure which can be efficiently rotated. If possible, the class should use a generic type (also called a template), and should support iteration via the standard for (Obj 0 : circularArray) notation.
+
+// Time complexity O(n), Space complexity O(n)
+
+class CircularArray
+{
+    public class CircularArr<T> : IEnumerable<T>
+    {
+        // To store the elements of the circular array
+        private T[] array;
+
+        // To keep track of the current starting position of the circular array
+        private int head = 0;
+
+        // Constructor
+        public CircularArr(int size)
+        {
+            array = new T[size];
+        }
+
+        // Method to convert external indices, as seen by users of the class, into internal indices in the underlying array
+
+        // Example: array = [A, B, C, D, E], Call Rotate(2), array stays the same but head = 2, so C is at index 0, whish is the head of the circular array
+        public int Convert(int index)
+        {
+            if (index < 0)
+            {
+                index += array.Length;
+            }
+            return (head + index) % array.Length;
+        }
+
+        // Method that rotates the circular array to the right by the given number of positions
+        public void Rotate(int shiftRight)
+        {
+            head = Convert(shiftRight);
+        }
+
+        // Indexer property that allows elements of the circular array to be accessed
+        public T this[int index]
+        {
+            get
+            {
+                if (index < 0 || index >= array.Length)
+                {
+                    throw new IndexOutOfRangeException();
+                }
+                return array[Convert(index)];
+            }
+            set
+            {
+                if (index < 0 || index >= array.Length)
+                {
+                    throw new IndexOutOfRangeException();
+                }
+                array[Convert(index)] = value;
+            }
+        }
+
+        // Generic and non-generic IEnumerator Methods that allow instances of the CircularArray class to be iterated over
+        public IEnumerator<T> GetEnumerator()
+        {
+            for (int i = 0; i < array.Length; i++)
+            {
+                yield return this[i];
+            }
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
+    }
+}
+
+
+// Q61: Minesweeper: Design and implement a text-based Minesweeper game. Minesweeper is the classic single - player computer game where an NxN grid has B mines (or bombs) hidden across the grid. The remaining cells are either blank or have a number behind them. The numbers reflect the number of bombs in the surrounding eight cells. The user then uncovers a cell. If it is a bomb, the player loses. If it is a number, the number is exposed. If it is a blank cell, this cell and all adjacent blank cells (up to and including the surrounding numeric cells) are exposed. The player wins when all non-bomb cells are exposed. The player can also flag certain places as potential bombs. This doesn't affect game play, other than to block the user from accidentally clicking a cell that is thought to have a bomb. (FHQ)
+
+class Minesweeper
+{
+    // Represents a single cell on the board
+    public class Cell
+    {
+        // To keep track of the row in which the cell is
+        private int row;
+
+        // To keep track of the column in which the cell is
+        private int column;
+
+        // To keep track of the number of bombs adjacent to the cell
+        private int number;
+
+        // To keep track of whether the cell contains a bomb
+        private bool isBomb;
+
+        // To keep track of whether the cell is exposed
+        private bool isExposed = false;
+
+        // To keep track of whether the cell has been marked as a guess by the user
+        private bool isGuess = false;
+
+        // Constructor
+        public Cell(int r, int c)
+        {
+            // ...
+        }
+
+        // Method to uncover a cell
+        public bool Flip()
+        {
+            isExposed = true;
+
+            return !isBomb;
+        }
+
+        // Method to mark/unmark a cell as a guess
+        public bool ToggleGuess()
+        {
+            if (!isExposed)
+            {
+                isGuess = !isGuess;
+            }
+            return isGuess;
+        }
+
+        // Method to check whether a cell is blank
+        public bool IsBlank()
+        {
+            // ...
+
+            return false;
+        }
+
+        // Method to set the row and column for a cell
+        public void SetRowAndColumn(int r, int c)
+        {
+            // ...
+        }
+
+        // Method to get the row in which the cell is
+        public int GetRow()
+        {
+            return row;
+        }
+
+        // Method to get the column in which the cell is
+        public int GetColumn()
+        {
+            return column;
+        }
+
+        // Method to increase the number of bombs adjacent to the cell
+        public int IncrementNumber()
+        {
+            return number++;
+        }
+    }
+
+    // Represents the game board
+    public class Board
+    {
+        // Number of rows on the board
+        private int nRows;
+
+        // Number of columns on the board
+        private int nColumns;
+
+        // Number of bombs on the board
+        private int nBombs = 0;
+
+        // Number of remaining unexposed cells on the board
+        private int numUnxposedRemaining;
+
+        // Represents the cells on the board
+        private Cell[,] cells;
+
+        // Represents the bombs on the board
+        private Cell[] bombs;
+
+        // Constructor
+        public Board(int r, int c, int b)
+        {
+            // ...
+        }
+
+        // Method to create the board
+        private void InitializeBoard()
+        {
+
+        }
+
+        // Method to uncover a cell on the board
+        public bool FlipCell(Cell cell)
+        {
+            // ...
+
+            return false;
+        }
+
+        // Method to check whether a cell is inside the bound of the board
+        public bool InBounds(int r, int c)
+        {
+            // ...
+
+            return false;
+        }
+
+        // Method to uncover all adjacent blank cells
+        public void ExpandBlank()
+        {
+            // ...
+        }
+
+        // Mehtod to uncover a cell based on user input
+        public UserPlayResult PlayFlip(UserPlay userPlay)
+        {
+            // ...
+
+            return null;
+        }
+
+        // Method to get the number of remaining unexposed cells on the board
+        public int GetUnexposedRemaining()
+        {
+            return numUnxposedRemaining;
+        }
+
+        // Method to shuffle the cells on the board randomly
+        void ShuffleBoard()
+        {
+            int nCells = nRows * nColumns;
+
+            Random random = new Random();
+
+            for (int index1 = 0; index1 < nCells; index1++)
+            {
+                int index2 = index1 + random.Next(nCells - index1);
+
+                if (index1 != index2)
+                {
+                    int row1 = index1 / nColumns;
+                    int column1 = (index1 * row1 / nColumns) % nColumns;
+
+                    Cell cell1 = cells[row1, column1];
+
+                    int row2 = index2 / nColumns;
+                    int column2 = (index2 * row2 / nColumns) % nColumns;
+
+                    Cell cell2 = cells[row2, column2];
+
+                    cells[row1, column1] = cell2;
+                    cell2.SetRowAndColumn(row1, column1);
+                    cells[row2, column2] = cell1;
+                    cell1.SetRowAndColumn(row2, column2);
+                }
+            }
+        }
+
+        // Method to set the numbers on each cell based on how many adjacent bombs there are
+        void SetNumberedCells()
+        {
+            int[][] deltas =
+            {
+                new[] {-1, -1}, new[] {-1, 0}, new[] {-1, 1},
+                new[] { 0, -1},                new[] { 0, 1},
+                new[] { 1, -1}, new[] { 1, 0}, new[] { 1, 1}
+            };
+
+            foreach (Cell bomb in bombs)
+            {
+                int row = bomb.GetRow();
+                int col = bomb.GetColumn();
+
+                foreach (int[] delta in deltas)
+                {
+                    int r = row + delta[0];
+                    int c = col + delta[1];
+
+                    if (InBounds(r, c))
+                    {
+                        cells[r, c].IncrementNumber();
+                    }
+                }
+            }
+        }
+
+        // Method to recursively uncover all adjacent blank cells when a blank cell is uncovered
+        void ExpandBlank(Cell cell)
+        {
+            int[][] deltas =
+            {
+                new[] {-1, -1}, new[] {-1, 0}, new[] {-1, 1},
+                new[] { 0, -1},                new[] { 0, 1},
+                new[] { 1, -1}, new[] { 1, 0}, new[] { 1, 1}
+            };
+
+            Queue<Cell> toExplore = new Queue<Cell>();
+            toExplore.Enqueue(cell);
+
+            while (toExplore.Count > 0)
+            {
+                Cell current = toExplore.Dequeue();
+                foreach (int[] delta in deltas)
+                {
+                    int r = current.GetRow() + delta[0];
+                    int c = current.GetColumn() + delta[1];
+
+                    if (InBounds(r, c))
+                    {
+                        Cell neighbor = cells[r, c];
+
+                        if (FlipCell(neighbor) && neighbor.IsBlank())
+                        {
+                            toExplore.Enqueue(neighbor);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // Represents a user’s move
+    public class UserPlay
+    {
+        // Represents the row and column at which the user wants to uncover a cell
+        private int row;
+        private int column;
+
+        // To mark the cell as a guess
+        private bool isGuess;
+    }
+
+    // Represents the result of a user’s move
+    public class UserPlayResult
+    {
+        // To check whether the move was successfull
+        private bool successful;
+
+        // To get the resulting game state after a move by the player
+        private Game.GameState resultingState;
+    }
+
+    // Represents the oveall game
+    public class Game
+    {
+        // Represents the possible states of the game
+        public enum GameState { WON, LOST, RUNNING }
+
+        // Represents the number of rows, columns and bombs in the game
+        private int rows;
+        private int columns;
+        private int bombs;
+
+        // Represents the game board
+        private Board board;
+
+        // Represents the current game state
+        private GameState state;
+
+        // Constructor
+        public Game(int r, int c, int b)
+        {
+            // ...
+        }
+
+        // Method to create a new game
+        public bool Initialize()
+        {
+            // ...
+
+            return false;
+        }
+
+        // Method to start the game
+        public bool Start()
+        {
+            // ...
+
+            return false;
+        }
+
+        // Method to play the game
+        private bool PlayGame()
+        {
+            // ...
+
+            return false;
+        }
+    }
+}
+
+
+// Q61: File System: Explain the data structures and algorithms that you would use to design an in-memory file system. Illustrate with an example in code where possible.
+
+// Time complexity O(n), Space complexity O(n)
+
+class FileSystem
+{
+    // Represents an entry in a file system
+    public abstract class Entry
+    {
+        // To store the parent directory of an entry
+        protected Directory parent;
+
+        // Timestamps to keep track of entry
+        protected long created;
+        protected long lastUpdated;
+        protected long lastAccecced;
+
+        // To store the name of the entry
+        protected string name;
+
+        // Constructor
+        public Entry(string n, Directory p)
+        {
+            name = n;
+            parent = p;
+            created = DateTime.Now.Ticks;
+            lastUpdated = DateTime.Now.Ticks;
+            lastAccecced = DateTime.Now.Ticks;
+        }
+
+        // Method to delete an entry
+        public bool Delete()
+        {
+            if (parent == null)
+            {
+                return false;
+            }
+            return parent.DeleteEntry(this);
+        }
+
+        // Abstract method to be implemented by any concrete subclass of Entry
+        public abstract int Size();
+
+        // Method that returns the full path of the entry by recursively calling the same method on its parent directory until it reaches the root
+        public string GetFullPath()
+        {
+            if (parent == null)
+            {
+                return name;
+            }
+            else
+            {
+                return parent.GetFullPath() + "/" + name;
+            }
+        }
+
+        // Method to get the name of the entry
+        public string GetName()
+        {
+            return name;
+        }
+
+        // Methods to get the creation time of the entry
+        public long GetCreationTime()
+        {
+            return created;
+        }
+
+        // Method to get the time at which the entry was last updated
+        public long GetLastUpdatedTime()
+        {
+            return lastUpdated;
+        }
+
+        // Method to get the time at which the entry was last accessed
+        public long GetLastAccessedTime()
+        {
+            return lastAccecced;
+        }
+
+        // Method to change the name of the entry
+        public void ChangeName(string n)
+        {
+            name = n;
+        }
+    }
+
+    // Represents a file in the file system
+    public class File : Entry
+    {
+        // To store the content of the file
+        private string content;
+
+        // To keep track of the size of the file
+        private int size;
+
+        // Constructor
+        public File(string n, Directory p, int sz) : base(n, p)
+        {
+            size = sz;
+        }
+
+        // Overridden method to get the size of the file
+        public override int Size()
+        {
+            return size;
+        }
+
+        // Method to get the contents of the file
+        public string GetContents()
+        {
+            return content;
+        }
+
+        // Method to change the contents of the file
+        public void SetContents(string c)
+        {
+            content = c;
+        }
+    }
+
+    // Represents a directory in the file system
+    public class Directory : Entry
+    {
+        // To store a list of contents(files or directories)
+        protected List<Entry> contents;
+
+        // Constructor
+        public Directory(string n, Directory p) : base(n, p)
+        {
+            contents = new List<Entry>();
+        }
+
+        // Overridden method to return the total size of all entries in the directory
+        public override int Size()
+        {
+            int size = 0;
+
+            foreach (Entry e in contents)
+            {
+                size += e.Size();
+            }
+            return size;
+        }
+
+        // Method to count the number of files in the directory
+        public int NumberOfFiles()
+        {
+            int count = 0;
+
+            foreach (Entry e in contents)
+            {
+                if (e is Directory)
+                {
+                    count++;
+                    Directory d = (Directory)e;
+                    count += d.NumberOfFiles();
+                }
+                else if (e is File)
+                {
+                    count++;
+                }
+            }
+            return count;
+        }
+
+        // Method to delete entries from the directory
+        public bool DeleteEntry(Entry entry)
+        {
+            return contents.Remove(entry);
+        }
+
+        // Method to add entries to the directory
+        public void AddEntry(Entry entry)
+        {
+            contents.Add(entry);
+        }
+
+        // Method to get the contents in the directory
+        protected List<Entry> GetContents()
+        {
+            return contents;
+        }
+    }
+}
+
+
+// Q62: Hash Table: Design and implement a hash table which uses chaining (linked lists) to handle collisions. (FHQ)
+
+// Time complexity O(n), Space complexity O(m)
+
+class HashTable
+{
+    // Represents the hash table
+    public class Hasher<K, V>
+    {
+        // Represents a node in the linked list
+        private class LinkedListNode
+        {
+            // Pointers to the next and previous node
+            public LinkedListNode next;
+            public LinkedListNode prev;
+
+            public K key;
+            public V value;
+
+            // Constructor
+            public LinkedListNode(K k, V v)
+            {
+                key = k;
+                value = v;
+            }
+        }
+
+        private List<LinkedListNode> arr;
+
+        // Constructor
+        public Hasher(int capacity)
+        {
+            // Each element in this list represents a bucket in the hash table
+            arr = new List<LinkedListNode>(capacity);
+
+            for (int i = 0; i < capacity; i++)
+            {
+                arr.Add(null);
+            }
+        }
+
+        // Method that takes a key and a value as arguments and adds them to the hash table
+        public void Put(K key, V value)
+        {
+            // Check if there is already a node with the same key in the table
+            LinkedListNode node = GetNodeForKey(key);
+
+            // If a node with the same key in the table is found, update its value
+            if (node != null)
+            {
+                node.value = value;
+                return;
+            }
+
+            // If a node with the same key in the table is not found, create a new node
+            node = new LinkedListNode(key, value);
+
+            // Add the new node to the appropriate bucket in the arr list
+            int index = GetIndexForKey(key);
+
+            if (arr[index] != null)
+            {
+                node.next = arr[index];
+                node.next.prev = node;
+            }
+            arr[index] = node;
+        }
+
+        // Method to remove the corresponding key-value pair from the hash table
+        public void Remove(K key)
+        {
+            // To find the node with the specified key
+            LinkedListNode node = GetNodeForKey(key);
+
+            // Update the pointers of the previous and next nodes in the linked list to remove it
+            if (node.prev != null)
+            {
+                node.prev.next = node.next;
+            }
+            else
+            {
+                arr[GetIndexForKey(key)] = node.next;
+            }
+
+            if (node.next != null)
+            {
+                node.next.prev = node.prev;
+            }
+        }
+
+        // Method that takes a key as an argument and returns the value associated with that key in the hash table
+        public V Get(K key)
+        {
+            // To find the node with the specified key
+            LinkedListNode node = GetNodeForKey(key);
+
+            return node == null ? default(V) : node.value;
+        }
+
+        // Helper method that takes a key as an argument and returns the node with that key in the hash table
+        private LinkedListNode GetNodeForKey(K key)
+        {
+            // Calculate the index of the appropriate bucket in the arr list using the GetIndexForKey method
+            int index = GetIndexForKey(key);
+
+            LinkedListNode current = arr[index];
+
+            // Searche for a node with the specified key in the bucket
+            while (current != null)
+            {
+                if (current.key.Equals(key))
+                {
+                    return current;
+                }
+                current = current.next;
+            }
+            return null;
+        }
+
+        // Helper method that takes a key as an argument and returns an index into the arr list
+        private int GetIndexForKey(K key)
+        {
+            // Calculates the index by taking the absolute value of the hash code of the key modulo the size of the arr list
+            return Math.Abs(key.GetHashCode() % arr.Count);
+        }
+    }
+}
+
+
+//                                                                   CHAPTER 10: SORTING & SEARCHING
+
+
+/* Common Sorting Algorithms:
+ * 
+ * 
+ * Bubble Sort: [Runtime: O(n^2) average and worst case. Memory: O(1)]
+ * 
+ *              In bubble sort, we start at the beginning of the array and swap the first two elements if the first is greater than the second. Then, we go to the next pair, and so on, continuously making sweeps of the array
+ *              until it is sorted. In doing so, the smaller items slowly"bubble" up to the beginning of the list.
+ *              
+ *              
+ * Selection Sort: [Runtime: O(n^2) average and worst case. Memory: O(1)]
+ * 
+ *                 Selection sort is the child's algorithm: simple, but inefficient. Find the smallest element using a linear scan and move it to the front (swapping it with the front element). Then, find the second smallest and
+ *                 move it, again doing a linear scan. Continue doing this until all the elements are in place. 
+ *                 
+ *                 
+ * Merge Sort: [Runtime: O(n log(n)) average and worst case. Memory: Depends] 
+ * 
+ *             Merge sort divides the array in half, sorts each of those halves, and then merges them back together. Each of those halves has the same sorting algorithm applied to it. Eventually, you are merging just two single
+ *             element arrays. It is the "merge" part that does all the heavy lifting. 
+ * 
+ * 
+ * Quick Sort: [Runtime: O(n log(n)) average, O(n2) worst case. Memory: O(log(n))]
+ * 
+ *             In quick sort, we pick a random element and partition the array, such that all numbers that are less than the partitioning element come before all elements that are greater than it. The partitioning can be
+ *             performed efficiently through a series of swaps.
+ *             
+ *             
+ * Radix Sort: [Runtime: O(kn)] 
+ * 
+ *             Radix sort is a sorting algorithm for integers (and some other data types) that takes advantage of the fact that integers have a finite number of bits. In radix sort, we iterate through each digit of the number, 
+ *             grouping numbers by each digit. For example, if we have an array of integers, we might first sort by the first digit, so that the 0s are grouped together. Then, we sort each of these groupings by the next digit.
+ *             We repeat this process sorting by each subsequent digit. until finally the whole array is sorted.
+ *             
+ *             
+ * Searching Algorithms:
+ * 
+ * 
+ * Binary Search: In binary search, we look for an element x in a sorted array by first comparing x to the midpoint of the array. If x is less than the midpoint, then we search the left half of the array. If x is greater than
+ *                the midpoint, then we search the right half of the array. We then repeat this process, treating the left and right halves as subarrays. Again, we compare x to the midpoint of this subarray and then search
+ *                either its left or right side. We repeat this process until we either find x or the subarray has size O.
+*/
+
+
+// Q63: Sorted Merge: You are given two sorted arrays, A and B, where A has a large enough buffer at the end to hold B. Write a method to merge B into A in sorted order.
+
+// Time complexity O(n), Space complexity O(1)
+
+class SortedMerge
+{
+    public void Merge(int[] A, int[] B, int lastA, int lastB)
+    {
+        // Points to the end of the merged array
+        int indexMerged = lastB + lastA - 1;
+
+        // Points to the current(last) element being considered in A and B
+        int indexA = lastA - 1;
+        int indexB = lastB - 1;
+
+        while (indexB >= 0)
+        {
+            // If the current element in A is larger than that in B, copy it into the current position in the merged array
+            if (indexA >= 0 && A[indexA] > B[indexB])
+            {
+                A[indexMerged] = A[indexA];
+
+                indexA--;
+            }
+            // If the current element in B is larger or equal than that in B, copy it into the current position in the merged array
+            else
+            {
+                A[indexMerged] = B[indexB];
+
+                indexB--;
+            }
+            indexMerged--;
+        }
+    }
+}
+
+
+// Q64: Group Anagrams: Write a method to sort an array of strings so that all the anagrams are next to each other.
+
+// Time complexity O(n*m log(m)), Space complexity O(n*m)
+
+class GroupAnagrams
+{
+    void Sort(string[] array)
+    {
+        // Create a new dictionary
+        var mapList = new Dictionary<string, List<string>>();
+
+        // Go through each string in the input array
+        foreach (var s in array)
+        {
+            // Sorts the characters in s
+            var key = SortChars(s);
+
+            // If the key is not already in the dictionary, add it with an empty list as its value
+            if (!mapList.ContainsKey(key))
+            {
+                mapList[key] = new List<string>();
+            }
+
+            // Add s to the list of strings for its sorted key
+            mapList[key].Add(s);
+        }
+
+        // To replace the elements of the original array
+        int index = 0;
+
+        // Go through each key in the dictionary
+        foreach (var key in mapList.Keys)
+        {
+            // Get the list of strings for that key
+            var list = mapList[key];
+
+            // Go through each string in the list and replace the elements of the original array with these strings
+            foreach (var item in list)
+            {
+                array[index] = item;
+
+                index++;
+            }
+        }
+    }
+
+    // Helper method that sorts the characters in a string
+    string SortChars(string s)
+    {
+        // Convert s into an array of characters
+        var content = s.ToCharArray();
+
+        // Sort the array of characters
+        Array.Sort(content);
+
+        // Convert the sorted array of characters back into a string and return it
+        return new string(content);
+    }
+}
+
+
+// Q65: Search in Rotated Array: Given a sorted array of n integers that has been rotated an unknown number of times, write code to find an element in the array. You may assume that the array was originally sorted in increasing order.
+
+// EXAMPLE: Input: Find 5 in {15, 16, 19, 20, 25, 1, 3, 4, 5, 7, 10, 14}
+//          Output: 8 (the index of 5 in the array)
+
+class SearchInRotatedArray
 {
 
 }
