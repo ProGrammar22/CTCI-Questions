@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections;
-using System.Globalization;
-using System.Runtime.CompilerServices;
+﻿using System.Collections;
 using System.Text;
-using static System.Reflection.Metadata.BlobBuilder;
 
 
 //                                                                   CHAPTER 1: ARRAYS & STRINGS
@@ -11,25 +7,26 @@ using static System.Reflection.Metadata.BlobBuilder;
 
 class ArraysAndStrings
 {
-    // One dimensional and two dimentional array Implementation:
+    // One dimensional and two dimensional array Implementation:
 
     public int[] oneDArray = new int[10];
     public string[,] twoDArray = new string[10, 10];
 
-    // C# supports upto 32 dimentional arrays
+    // C# supports up to 32 dimensional arrays
 }
 
 
 // Q1: Is Unique: Implement an algorithm to determine if a string has all unique characters. What if you cannot use additional data structures?
 
 // Solution 1: Using ASCII
+
 // Time complexity O(n), Space complexity O(1)
 
 class IsUnique
 {
     public static bool isUnique(string unique)
     {
-        // Checks if the length of the 'unique' string is greater than 128. Since there are only 128 unique ASCII characters, if the 'unique' string has more than 128 characters, it must contain at least one repeated character. In this case, the method returns false.
+        // Check if the length of the 'unique' string is greater than 128. Since there are only 128 unique ASCII characters, if the 'unique' string has more than 128 characters, it must contain at least one repeated character. In this case, the method returns false.
         if (unique.Length > 128)
         {
             return false;
@@ -41,19 +38,20 @@ class IsUnique
         {
             int value = unique[i];
 
-            // Checks if the value at the index 'value' in the 'characters' array is true. If it is, this means that the current character has already appeared in the 'unique' string, so the method returns false.
+            // Check if the value at the index 'value' in the 'characters' array is true. If it is, this means that the current character has already appeared in the 'unique' string, so the method returns false.
             if (characters[value])
             {
                 return false;
             }
 
-            // If the value at the index 'value' in the 'characters' array is not true, we set it to true to indicate that this character has now appeared in the 'unique' string.
+            // If the value at the index 'value' in the 'characters' array is not true, set it to true to indicate that this character has now appeared in the 'unique' string.
             characters[value] = true;
         }
         return true;
     }
 
     // Solution 2: No Additional Data Structures
+
     // Time complexity O(n^2), Space complexity O(1)
 
     public static bool isUniqueNoDs(string unique)
@@ -76,6 +74,7 @@ class IsUnique
 // Q2: Check Permutation: Given two strings, write a method to decide if one is a permutation of the other.
 
 // Solution: Using ASCII
+
 // Time complexity O(n), Space complexity O(1)
 
 class CheckPermutation
@@ -120,7 +119,7 @@ class URLify
 {
     public static string ReplaceSpaces(string str, int trueLength)
     {
-        // Converts the string to the characters array
+        // Convert the string to the characters array
         char[] characters = str.ToCharArray();
         int spaceCount = 0;
 
@@ -165,7 +164,7 @@ class URLify
 
 class PalindromePermutation
 {
-    public static bool isPermutaionOfPalindrome(string str)
+    public static bool isPermutationOfPalindrome(string str)
     {
         int bitVector = CreateBitVector(str);
 
@@ -365,7 +364,7 @@ class RotateMatrix
 
 class ZeroMatrix
 {
-    public static void SetZeroes(int[,] matrix)
+    public static void SetZeros(int[,] matrix)
     {
         int n = matrix.GetLength(0);
         int m = matrix.GetLength(1);
@@ -439,7 +438,7 @@ class ZeroMatrix
 }
 
 
-// Q9: String Rotation: Assume you have a method isSubst ring which checks if one word is a substring of another. Given two strings, s1 and s2, write code to check if s2 is a rotation of s1 using only one call to isSubstring (e.g., "waterbottle" is a rotation of"erbottlewat").
+// Q9: String Rotation: Assume you have a method isSubstring which checks if one word is a substring of another. Given two strings, s1 and s2, write code to check if s2 is a rotation of s1 using only one call to isSubstring (e.g., "waterbottle" is a rotation of"erbottlewat").
 
 // Time complexity O(n), Space complexity O(n)
 
@@ -572,6 +571,7 @@ class LinkedLists
 // Q10: Remove Dups: Write code to remove duplicates from an unsorted linked list.
 
 // Solution 1: Using HashSet
+
 // Time complexity O(n), Space complexity O(n)
 
 class RemoveDups
@@ -608,6 +608,7 @@ class RemoveDups
     // How would you solve this problem if a temporary buffer is not allowed?
 
     // Solution 2: Without buffers(additional data structures)
+
     // Time complexity O(n^2), Space complexity O(1)
 
     public void RemoveDuplicateNoBuffer(LinkedLists.Node head)
@@ -760,10 +761,11 @@ class Partition
 // Q14: Sum Lists: You have two numbers represented by a linked list, where each node contains a single digit. The digits are stored in reverse order, such that the 1's digit is at the head of the list. Write a function that adds the two numbers and returns the sum as a linked list.
 
 //      EXAMPLE:
-//      Input: (7 -> 1 -> 6) + (5 -> 9 -> 2) .Thatis,617 + 295.
+//      Input: (7 -> 1 -> 6) + (5 -> 9 -> 2) . That is, 617 + 295.
 //      Output: 2 -> 1 -> 9. That is, 912. 
 
 // Solution 1: Reverse Order
+
 // Time complexity O(max(m,n)), Space complexity O(max(m,n))
 
 class SumLists
@@ -809,10 +811,11 @@ class SumLists
     // Suppose the digits are stored in forward order. Repeat the above problem.
 
     // EXAMPLE:
-    // Input: (6 -> 1 -> 7) + (2 -> 9 -> 5).Thatis,617 + 295. 
+    // Input: (6 -> 1 -> 7) + (2 -> 9 -> 5). That is, 617 + 295. 
     // Output: 9 -> 1 -> 2. That is, 912.
 
     // Solution 2: Forward Order
+
     // Time complexity O(n), Space complexity O(n)
 
     private class PartialSum
@@ -830,11 +833,11 @@ class SumLists
         // Insert zeros in the input lists to equalize the length of both
         if (len1 < len2)
         {
-            l1 = Padlist(l1, len2 - len1);
+            l1 = PadList(l1, len2 - len1);
         }
         else
         {
-            l2 = Padlist(l2, len1 - len2);
+            l2 = PadList(l2, len1 - len2);
         }
 
         // Call the AddListsHelper method to perform addition on the input lists
@@ -857,7 +860,7 @@ class SumLists
     // Method to perform addition on the input lists
     private static PartialSum AddListsHelper(LinkedLists.Node l1, LinkedLists.Node l2)
     {
-        // Return default new PartailSum values after reaching the end of both input lists
+        // Return default new PartialSum values after reaching the end of both input lists
         if (l1 == null && l2 == null)
         {
             return new PartialSum();
@@ -878,7 +881,7 @@ class SumLists
     }
 
     // Method to insert zeros in the input lists
-    private static LinkedLists.Node Padlist(LinkedLists.Node l, int padding)
+    private static LinkedLists.Node PadList(LinkedLists.Node l, int padding)
     {
         LinkedLists.Node head = l;
 
@@ -901,6 +904,7 @@ class SumLists
             // Set the next node to be the head
             node.Next = list;
         }
+
         // Return the node containing zero
         return node;
     }
@@ -957,7 +961,7 @@ class Palindrome
 
         bool result = true;
 
-        // Iterate through both halfs to compare if both have the same data
+        // Iterate through both halves to compare if both have the same data
         while (p2 != null)
         {
             if (p1.Data != p2.Data)
@@ -975,6 +979,7 @@ class Palindrome
 
         return result;
     }
+
     // Method for reversing a list from the given head
     public static LinkedLists.Node ReverseList(LinkedLists.Node head)
     {
@@ -1016,7 +1021,7 @@ class Intersection
             return null;
         }
 
-        // Find out which list is shoter and which list is longer in size
+        // Find out which list is shorter and which list is longer in size
         LinkedLists.Node shorter = result1.size < result2.size ? l1 : l2;
         LinkedLists.Node longer = result1.size < result2.size ? l2 : l1;
 
@@ -1118,7 +1123,7 @@ class LoopDetection
             }
         }
 
-        // If no collidion is detected there is no loop in the list
+        // If no collision is detected there is no loop in the list
         if (fast.Next == null || fast.Next.Next == null)
         {
             return null;
@@ -1147,7 +1152,6 @@ class StacksAndQueues
 {
     // Stacks(LIFO) & Queues(FIFO)
 }
-
 
 // Q18: Three in One: Describe how you could use a single array to implement three stacks.
 
@@ -1286,7 +1290,7 @@ class StackMin
             return value;
         }
 
-        // Method to look up the minimun value in the stack
+        // Method to look up the minimum value in the stack
         public int Min()
         {
             if (minStack.Count == 0)
@@ -1678,92 +1682,91 @@ class AnimalShelter
 
 class TreesAndGraphs
 {
-    /* Tree Traversal Methods
-     * 
-     * 
-     * In-Order Traversal:
-     * 
-     * void InOrderTraversal(TreeNode node) 
-     * { 
-     *     if (node != null) 
-     *     { 
-     *         InOrderTraversal(node.left); All nodes on the left first
-     *         Visit(node); Then current node
-     *         InOrderTraversal(node.right); Then all nodes on the right
-     *     } 
-     * }
-     *
-     *
-     * Pre-Order Traversal:
-     *
-     * void PreOrderTraversal(TreeNode node)
-     * {
-     *     if (node != null)
-     *     {
-     *         Visit(node); Current node first
-     *         PreOrderTraversal(node.left); Then all nodes on the left
-     *         PreOrderTraversal(node.right); Then all nodes on the right
-     *     }
-     * }
-     *
-     *
-     * Post-Order Traversal:
-     *
-     * void PostOrderTraversal(TreeNode node)
-     * {
-     *     if (node != null)
-     *     {
-     *         PostOrderTraversal(node.left); All nodes on the left first
-     *         PostOrderTraversal(node.right); Then all nodes on the right
-     *         Visit(node); Then the current node
-     *     }
-     * }
-     *
-     *
-     * Graph & Tree Searching Methods
-     *
-     *
-     * Depth-First Search(DFS):
-     *
-     * void Search(Node root)
-     * {
-     *     Visit(root); Start from the root
-     *     root.Visited = true;
-     *
-     *     foreach (Node n in root.Adjacent)
-     *     {
-     *         if (n.Visited == false)
-     *         {
-     *             Search(n);
-     *         }
-     *     }
-     * }
-     *
-     *
-     * Breadth-First Search(BFS):
-     *
-     * void Search(Node root)
-     * {
-     *     Queue queue = new Queue(); Create a queue
-     *     root.Marked = true; Mark root as searched
-     *     queue.Enqueue(root); Add at the end of the queue
-     *
-     *     while (!queue.IsEmpty())
-     *     {
-     *         Node r = queue.Dequeue(); Remove from the front of the queue
-     *         Visit(r); Search in the queue
-     *
-     *         foreach (Node n in r.Adjacent)
-     *         {
-     *             if (n.Marked = false) If not marked as searched
-     *             {
-     *                 n.Marked = true; Mark as searched
-     *                 queue.Enqueue(n); Add to be searched in the queue 
-     *             }
-     *         }
-     *     }
-     *  }
-    */
+    // Tree Traversal Methods
+
+
+    // In-Order Traversal:
+
+    // void InOrderTraversal(TreeNode node) 
+    // { 
+    //     if (node != null) 
+    //     { 
+    //         InOrderTraversal(node.left); All nodes on the left first
+    //         Visit(node); Then current node
+    //         InOrderTraversal(node.right); Then all nodes on the right
+    //     } 
+    // }
+
+
+    // Pre-Order Traversal:
+
+    // void PreOrderTraversal(TreeNode node)
+    // {
+    //     if (node != null)
+    //     {
+    //         Visit(node); Current node first
+    //         PreOrderTraversal(node.left); Then all nodes on the left
+    //         PreOrderTraversal(node.right); Then all nodes on the right
+    //     }
+    // }
+
+
+    // Post-Order Traversal:
+
+    // void PostOrderTraversal(TreeNode node)
+    // {
+    //     if (node != null)
+    //     {
+    //         PostOrderTraversal(node.left); All nodes on the left first
+    //         PostOrderTraversal(node.right); Then all nodes on the right
+    //         Visit(node); Then the current node
+    //     }
+    // }
+
+
+    // Graph & Tree Searching Methods
+
+
+    // Depth-First Search(DFS):
+
+    // void Search(Node root)
+    // {
+    //     Visit(root); Start from the root
+    //     root.Visited = true;
+
+    //     foreach (Node n in root.Adjacent)
+    //     {
+    //         if (n.Visited == false)
+    //         {
+    //             Search(n);
+    //         }
+    //     }
+    // }
+
+
+    // Breadth-First Search(BFS):
+
+    // void Search(Node root)
+    // {
+    //     Queue queue = new Queue(); Create a queue
+    //     root.Marked = true; Mark root as searched
+    //     queue.Enqueue(root); Add at the end of the queue
+
+    //     while (!queue.IsEmpty())
+    //     {
+    //         Node r = queue.Dequeue(); Remove from the front of the queue
+    //         Visit(r); Search in the queue
+
+    //         foreach (Node n in r.Adjacent)
+    //         {
+    //             if (n.Marked = false) If not marked as searched
+    //             {
+    //                 n.Marked = true; Mark as searched
+    //                 queue.Enqueue(n); Add to be searched in the queue 
+    //             }
+    //         }
+    //     }
+    //  }
 
 
     // Graph implementation
@@ -1909,11 +1912,11 @@ class MinimalTree
     // Method that represents the sorted input array
     public TreeNode CreateMinimalBST(int[] array)
     {
-        // Calls the private method with three arguments: input array, index of the first element in the input array, index of the last element in the input array
+        // Call the private method with three arguments: input array, index of the first element in the input array, index of the last element in the input array
         return CreateMinimalBST(array, 0, array.Length - 1);
     }
 
-    // Method with three parameters: subarray representing the input array, the start index of the subarray to process, the end index of the subarray to process
+    // Method with three parameters: sub-array representing the input array, the start index of the sub-array to process, the end index of the sub-array to process
     private TreeNode CreateMinimalBST(int[] array, int start, int end)
     {
         if (end < start)
@@ -1921,7 +1924,7 @@ class MinimalTree
             return null;
         }
 
-        // Calculate the middle index of the subarray
+        // Calculate the middle index of the sub-array
         int mid = (start + end) / 2;
         TreeNode node = new TreeNode(array[mid]);
 
@@ -1955,7 +1958,7 @@ class ListOfDepths
             current.AddLast(root);
         }
 
-        // Iterate through the tree until all the nodes are in their respective lisits
+        // Iterate through the tree until all the nodes are in their respective lists
         while (current.Count > 0)
         {
             // Add the linked list with the current nodes to the list
@@ -1999,7 +2002,7 @@ class CheckBalanced
 {
     public bool IsBalanced(MinimalTree.TreeNode root)
     {
-        // Returns the height of the subtree rooted at the given tree
+        // Return the height of the subtree rooted at the given tree
         return CheckHeight(root) != int.MinValue;
     }
 
@@ -2028,7 +2031,7 @@ class CheckBalanced
             return int.MinValue;
         }
 
-        // Calculate the height difference between the left and rigth subtrees
+        // Calculate the height difference between the left and right subtrees
         int heightDiff = leftHeight - rightHeight;
 
         // Check if the height difference is more than required
@@ -2066,7 +2069,7 @@ class ValidateBST
             return true;
         }
 
-        // Check if the value of the node satifies the BST invariant
+        // Check if the value of the node satisfies the BST invariant
         if (node.Value < min || node.Value > max)
         {
             return false;
@@ -2240,7 +2243,7 @@ class BuildOrder
         // List of projects in the graph
         public List<Project> nodes { get; } = new List<Project>();
 
-        // Maps names of projects in the graph to the corresponding project
+        // Map names of projects in the graph to the corresponding project
         public Dictionary<char, Project> map { get; } = new Dictionary<char, Project>();
 
         // Method to create a new project in the graph
@@ -2272,13 +2275,13 @@ class BuildOrder
 
     public class Project
     {
-        // Defines possible states of the project
+        // Possible states of the project
         public enum StateType { COMPLETE, PARTIAL, BLANK };
 
         // List of children projects on which the project depends
         public List<Project> children { get; } = new List<Project>();
 
-        // Maps names of the children projects to the corresponding projects
+        // Map names of the children projects to the corresponding projects
         public Dictionary<char, Project> map { get; } = new Dictionary<char, Project>();
 
         // Represents the name of the project
@@ -2614,10 +2617,10 @@ class RandomNode
                 }
             }
 
-            // If the value is greater than the current node's value, insert it into the rigth subtree
+            // If the value is greater than the current node's value, insert it into the right subtree
             else
             {
-                // If rigth child of the current node is empty
+                // If right child of the current node is empty
                 if (Right == null)
                 {
                     // Create a new node with the given value
@@ -2691,7 +2694,7 @@ class RandomNode
                     Right.Delete(Data, this);
                 }
 
-                // Update the parent node's refrence to point to the right or left node that comes after the current deleted node
+                // Update the parent node's reference to point to the right or left node that comes after the current deleted node
                 else if (parent.Left == this)
                 {
                     parent.Left = (Left != null) ? Left : Right;
@@ -2792,7 +2795,7 @@ class PathsWithSum
         // Increment the count of paths with current running sum in the dictionary
         IncrementHashTable(pathCount, runningSum, 1);
 
-        // Continure counting paths on both sides recursively and add them to the count
+        // Continue counting paths on both sides recursively and add them to the count
         totalPaths += CountPathsWithSum(node.left, targetSum, runningSum, pathCount);
         totalPaths += CountPathsWithSum(node.right, targetSum, runningSum, pathCount);
 
@@ -2827,103 +2830,91 @@ class PathsWithSum
 
 class BitManipulation
 {
-    /* Bitwise complement operator '~': The ~ operator produces a bitwise complement of its operand by reversing each bit.
-     * 
-     * Input(32 bit):   x = 00001111000011110000111100001100
-     * Output:         ~x = 11110000111100001111000011110011
-     * 
-     * 
-     * Left-shift operator '<<': The << operator shifts its left-hand operand left by the number of bits defined by its right-hand operand. The left-shift operation discards the   
-     *                           high-order bits that are outside the range of the result type and sets the low-order empty bit positions to zero.
-     * 
-     * Input(32 bit):  x =      11001001000000000000000000010001
-     * Output:         x << 4 = 10010000000000000000000100010000
-     * 
-     * 
-     * Right-shift operator '>>': The >> operator shifts its left-hand operand right by the number of bits defined by its right-hand operand. The right-shift operation discards the
-     *                            low-order bits.
-     *                            
-     * Input(4 bit):  x =      1001
-     * Output:        x >> 2 = 0010
-     * 
-     * 
-     * The high-order empty bit positions are set based on the type of the left-hand operand as follows:
-     * 
-     *   If the left-hand operand is of type int or long, the right-shift operator performs an arithmetic shift: the value of the most significant bit (the sign bit) of the left
-     *   hand operand is propagated to the high-order empty bit positions. That is, the high-order empty bit positions are set to zero if the left-hand operand is non-negative and
-     *   set to one if it's negative.
-     * 
-     * Input(32 bit):  a = int.MinValue (Negative) = 10000000000000000000000000000000
-     * Output:         a >> 3 =                      11110000000000000000000000000000
-     * 
-     * 
-     *   If the left-hand operand is of type uint or ulong, the right-shift operator performs a logical shift: the high-order empty bit positions are always set to zero.
-     *   
-     * Input(32 bit):  c =      10000000000000000000000000000000
-     * Output:         c >> 3 = 00010000000000000000000000000000
-     * 
-     * 
-     * Unsigned right-shift operator '>>>': The >>> operator shifts its left-hand operand right by the number of bits defined by its right-hand operand. The >>> operator always
-     *                                      performs a logical shift. That is, the high-order empty bit positions are always set to zero, regardless of the type of the left-hand
-     *                                      operand. The >> operator performs an arithmetic shift (that is, the value of the most significant bit is propagated to the high-order
-     *                                      empty bit positions) if the left-hand operand is of a signed type. The following example demonstrates the difference between >> and >>>
-     *                                      operators for a negative left-hand operand:
-     *                                      
-     * Input(32 bit): x = -8 =  11111111111111111111111111111000
-     * Output:        x >> 2 =  11111111111111111111111111111110
-     *                x >>> 2 = 00111111111111111111111111111110
-     *                
-     *                
-     * Logical AND operator '&': The & operator computes the bitwise logical AND of its integral operands. If both bits are 1, the result is 1; otherwise, the result is 0.
-     * 
-     * Input(8 bit):  a =         11111000
-     *                b =         10011101
-     * Output:        c = a & b = 10011000
-     * 
-     * 
-     * Logical exclusive OR operator '^': The ^ operator computes the bitwise logical exclusive OR, also known as the bitwise logical XOR, of its integral operands. If one bit is 1
-     *                                    and the other bit is 0, the result is 1; otherwise, the result is 0.
-     *                                    
-     * Input(8 bit): a =         11111000
-     *               b =         00011100
-     * Output:       c = a ^ b = 11100100
-     * 
-     * 
-     * Logical OR operator '|': The | operator computes the bitwise logical OR of its integral operands. If at least one bit is 1, the result is 1; otherwise, the result is 0.
-     * 
-     * Input(8 bit): a =         10100000
-     *               b =         10010001
-     * Output:       c = a | b = 10110001
-     * 
-     * 
-     * Addition '+': To perform binary addition, we start from the rightmost bit and add the corresponding bits from the two numbers, along with any carry from the previous column.
-     *               If the sum of the bits is 2, we write down a 0, If the sum of the bits is 3, we write down a 1, and carry over a 1 to the next column.
-     *                
-     * Input(4 bit): a =         1001  |  1111
-     *               b =         0110  |  1111
-     * Output        c = a + b = 1111  | 11110
-     * 
-     * 
-     * Subtraction '-': To perform binary subtraction, we start from the rightmost bit and subtract the corresponding bits from the two numbers, along with any borrow from the
-     *                  previous column. If the bit in the subtrahend (the number being subtracted) is larger than the bit in the minuend (the number being subtracted from), we
-     *                  borrow a 1 from the next column.
-     *                  
-     * Input(4 bit): a =         1111 | 1001
-     *               b =         1111 | 0110
-     * Output:       c = a - b = 0000 | 0011
-     * 
-     * 
-     * Multiplication '*': Multiply the multiplier by each digit of the multiplicand to achieve intermediate products, whose last digit is in the position of the corresponding
-     *                     multiplicand digit. The final product is the sum of those intermediate products.
-     *                     
-     * Input(4 bit): a =         0011 | 0011
-     *               b =         0011 | 0101
-     * Output:       c = a * b = 1001 | 1111
-    */
+    // Bitwise complement operator '~': The ~ operator produces a bitwise complement of its operand by reversing each bit.
+
+    // Input(32 bit):   x = 00001111000011110000111100001100
+    // Output:         ~x = 11110000111100001111000011110011
+
+
+    // Left-shift operator '<<': The << operator shifts its left-hand operand left by the number of bits defined by its right-hand operand. The left-shift operation discards the   
+    //                           high-order bits that are outside the range of the result type and sets the low-order empty bit positions to zero.
+
+    // Input(32 bit):  x =      11001001000000000000000000010001
+    // Output:         x << 4 = 10010000000000000000000100010000
+
+
+    // Right-shift operator '>>': The >> operator shifts its left-hand operand right by the number of bits defined by its right-hand operand. The right-shift operation discards the
+    //                            low-order bits.
+
+    // Input(4 bit):  x =      1001
+    // Output:        x >> 2 = 0010
+
+
+    // The high-order empty bit positions are set based on the type of the left-hand operand as follows:
+
+    //   If the left-hand operand is of type int or long, the right-shift operator performs an arithmetic shift: the value of the most significant bit (the sign bit) of the left hand operand is propagated to the high-order empty bit positions. That is, the high-order empty bit positions are set to zero if the left-hand operand is non-negative and set to one if it's negative.
+
+    // Input(32 bit):  a = int.MinValue (Negative) = 10000000000000000000000000000000
+    // Output:         a >> 3 =                      11110000000000000000000000000000
+
+
+    //   If the left-hand operand is of type uint or ulong, the right-shift operator performs a logical shift: the high-order empty bit positions are always set to zero.
+
+    // Input(32 bit):  c =      10000000000000000000000000000000
+    // Output:         c >> 3 = 00010000000000000000000000000000
+
+
+    // Unsigned right-shift operator '>>>': The >>> operator shifts its left-hand operand right by the number of bits defined by its right-hand operand. The >>> operator always performs a logical shift. That is, the high-order empty bit positions are always set to zero, regardless of the type of the left-hand operand. The >> operator performs an arithmetic shift (that is, the value of the most significant bit is propagated to the high-order empty bit positions) if the left-hand operand is of a signed type. The following example demonstrates the difference between >> and >>> operators for a negative left-hand operand:
+
+    // Input(32 bit): x = -8 =  11111111111111111111111111111000
+    // Output:        x >> 2 =  11111111111111111111111111111110
+    //                x >>> 2 = 00111111111111111111111111111110
+
+
+    // Logical AND operator '&': The & operator computes the bitwise logical AND of its integral operands. If both bits are 1, the result is 1; otherwise, the result is 0.
+
+    // Input(8 bit):  a =         11111000
+    //                b =         10011101
+    // Output:        c = a & b = 10011000
+
+
+    // Logical exclusive OR operator '^': The ^ operator computes the bitwise logical exclusive OR, also known as the bitwise logical XOR, of its integral operands. If one bit is 1 and the other bit is 0, the result is 1; otherwise, the result is 0.
+
+    // Input(8 bit): a =         11111000
+    //               b =         00011100
+    // Output:       c = a ^ b = 11100100
+
+
+    // Logical OR operator '|': The | operator computes the bitwise logical OR of its integral operands. If at least one bit is 1, the result is 1; otherwise, the result is 0.
+
+    // Input(8 bit): a =         10100000
+    //               b =         10010001
+    // Output:       c = a | b = 10110001
+
+
+    // Addition '+': To perform binary addition, we start from the rightmost bit and add the corresponding bits from the two numbers, along with any carry from the previous column. If the sum of the bits is 2, we write down a 0, If the sum of the bits is 3, we write down a 1, and carry over a 1 to the next column.
+
+    // Input(4 bit): a =         1001  |  1111
+    //               b =         0110  |  1111
+    // Output        c = a + b = 1111  | 11110
+
+
+    // Subtraction '-': To perform binary subtraction, we start from the rightmost bit and subtract the corresponding bits from the two numbers, along with any borrow from the previous column. If the bit in the subtrahend (the number being subtracted) is larger than the bit in the minuend (the number being subtracted from), we borrow a 1 from the next column.
+
+    // Input(4 bit): a =         1111 | 1001
+    //               b =         1111 | 0110
+    // Output:       c = a - b = 0000 | 0011
+
+
+    // Multiplication '*': Multiply the multiplier by each digit of the multiplicand to achieve intermediate products, whose last digit is in the position of the corresponding multiplicand digit. The final product is the sum of those intermediate products.
+
+    // Input(4 bit): a =         0011 | 0011
+    //               b =         0011 | 0101
+    // Output:       c = a * b = 1001 | 1111
 }
 
-// Q36: Insertion: You are given two 32-bit numbers, Nand M, and two bit positions, i and j. Write a method to insert Minto N such that M starts at bit j and ends at bit i. You can assume that the bits j through i have enough space to fit all of M. That is, if M = 10011, you can assume that there are at least 5 bits between j and i. You would not, for example, have j = 3 and i = 2, because M could not fully fit between bit 3 and bit 2.
-// 
+// Q36: Insertion: You are given two 32-bit numbers, N and M, and two bit positions, i and j. Write a method to insert M into N such that M starts at bit j and ends at bit i. You can assume that the bits j through i have enough space to fit all of M. That is, if M = 10011, you can assume that there are at least 5 bits between j and i. You would not, for example, have j = 3 and i = 2, because M could not fully fit between bit 3 and bit 2.
+
 // EXAMPLE:
 // Input:  N = 10000000000, M = 10011, i = 2, j = 6
 // Output: N = 10001001100
@@ -2962,17 +2953,17 @@ class Insertion
 
 // Time complexity O(k), Space complexity O(1), k = number of bits required to represent the binary representation of the input number
 
-class BinaeyToString
+class BinaryToString
 {
     string PrintBinary(double num)
     {
-        // Checks if the input number is within the valid range (between 0 and 1)
+        // Check if the input number is within the valid range (between 0 and 1)
         if (num <= 0 || num >= 1)
         {
             return "ERROR";
         }
 
-        // Createa a StringBuilder object to build the binary representation of the number
+        // Create a StringBuilder object to build the binary representation of the number
         StringBuilder binary = new StringBuilder();
 
         // The binary representation starts with a decimal point, so the method appends a “.” to the StringBuilder
@@ -2981,7 +2972,7 @@ class BinaeyToString
         // Loop that continues until the input number becomes 0
         while (num > 0)
         {
-            // Checks if the length of the binary representation has reached 32 characters
+            // Check if the length of the binary representation has reached 32 characters
             if (binary.Length >= 32)
             {
                 return "ERROR";
@@ -3054,10 +3045,10 @@ class FlipBitToWin
                 currentLength = 0;
             }
 
-            // Updates the value of maxLength, which is between its current value and the sum of previousLength, currentLength, and 1, 1 represents the bit that can be flipped from  0 to 1
+            // Update the value of maxLength, which is between its current value and the sum of previousLength, currentLength, and 1, 1 represents the bit that can be flipped from  0 to 1
             maxLength = Math.Max(previousLength + currentLength + 1, maxLength);
 
-            // Shifts the bits of a, one position to the right 
+            // Shift the bits of a, one position to the right 
             a >>= 1;
         }
         // Return the length of the longest sequence of consecutive 1s
@@ -3121,7 +3112,7 @@ class NextNumber
 
 // Time complexity O(n), Space complexity O(1)
 
-class Deubugger
+class Debugger
 {
     int BitSwapsRequired(int a, int b)
     {
@@ -3219,173 +3210,136 @@ class DrawLine
 
 class MathAndLogicPuzzles
 {
-    /* Extra Questions:
-     * 
-     * Q1: You have two ropes, and each takes exactly one hour to burn. How would you use them to time exactly 15 minutes? Note that the ropes are of uneven densities, so half the
-     *     rope length-wise does not necessarily take half an hour to burn.
-     *     
-     * Step 1: Light rope 1 at both ends and rope 2 at one end. 
-     * Step 2: When the two flames on Rope 1 meet. 30 minutes will have passed. Rope 2 has 30 minutes left of burn-time.
-     * Step 3: At that point, light Rope 2 at the other end. 
-     * Step 4: In exactly fifteen minutes, Rope 2 will be completely burnt.
-     * 
-     * Q2: You have nine balls. Eight are of the same weight, and one is heavier. You are given a balance which tells you only whether the left side or the right side is heavier.
-     *     Find the heavy ball in just two uses of the scale.
-     *     
-     * Step 1: Divide the balls into sets of three items each.
-     * Step 2: Put first set of three balls on one side of the scale and second set on the other side.
-     * Step 3: If one of these sets is heavier then the heavier ball is in that set, if both sets have equal weight then the heavier ball is in the third set.
-     * Step 4: Take the set with the heavier ball, put one ball on each side of the scale and keep one ball off to the side.
-     * Step 5: One of the balls on the scale will be heavier or if the balls on the scale have equal weight the third ball is heavier.
-     * 
-     * Q3: You have 8 guests on a birthday party and only one cake, the cake is perfectly round or square, divide the cake into 8 equal pieces in 3 cuts.
-     * 
-     * Step 1: Cut the cake in half vertically from the top.
-     * Step 2: Cut the cake in half again horizontally from the top.
-     * Step 3: Cut the cake in half in the middle from the side
-     * 
-     * 
-     * Q43: The Heavy Pill: You have 20 bottles of pills. 19 bottles have 1.0 gram pills, but one has pills of weight 1.1 grams. Given a scale that provides an exact measurement,
-     *      how would you find the heavy bottle? You can only use the scale once.
-     * 
-     * If we took one pill from Bottle #1 and two pills from Bottle #2, what would the scale show? It depends. If Bottle #1 were the heavy bottle, we would get 3.1 grams. If Bottle
-     * #2 were the heavy bottle, we would get 3.2 grams.
-     * 
-     * We know the "expected" weight of a bunch of pills. The difference between the expected weight and the actual weight will indicate which bottle contributed the heavier pills,
-     * provided we select a different number of pills from each bottle.
-     * 
-     * Step 1: Take one pill from Bottle #1, two pills from Bottle #2, three pills from Bottle #3, and so on.
-     * Step 2: Weigh this mix of pills. If all pills were one gram each, the scale would read 210 grams. Any "overage" must come from the extra 0.1 gram pills.
-     * Step 3: Calculate the bottle number with the formula weight - 210grams / 0.1grams, So, if the set of pills weighed 211.3 grams, then Bottle #13 would have the heavy pills.
-     * 
-     * 
-     * Q44: Basketball: You have a basketball hoop and someone says that you can play one of two games. Game 1: You get one shot to make the hoop. Game 2: You get three shots and
-     *      you have to make two of three shots. If p is the probability of making a particular shot, for which values of p should you pick one game or the other?
-     *      
-     * Probability of winning Game 1: The probability of winning Game 1 is p, by definition. 
-     * Probability of winning Game 2: Let s(k, n) be the probability of making exactly k shots(s) out of n. The probability of winning Game 2 is the probability of making exactly
-     * two shots out of three OR making all three shots. In other words:
-     * 
-     * P(winning) = s(2, 3) + s(3, 3)
-     * 
-     * The probability of making all three shots is:
-     * 
-     * s (3, 3) = p^3
-     * 
-     * The probability of making exactly two shots is:
-     * 
-     *   P(making 1 and 2, and missing 3) + P(making 1 and 3, and missing 2) + P(missing 1, and making 2 and 3):
-     * = p * p * (1 - p) + p * (1 - p) * p + (1 - p) * p * p, [p =  making, (1 - p) = missing]
-     * = 3 (1 - p) p^2
-     * 
-     * Adding both probabilities together, we get:
-     * 
-     *   p^3 + 3 (1 - p) p^2
-     * = p^3 + 3p^2 - 3p^3
-     * = 3p^2 - 2p^3, [Shift: 3p^2 - 3p^3 - p^3 = 3p^2 2p^3]
-     * 
-     * Which game should you play? 
-     * You should play Game 1 if P (Game 1) > P (Game 2):
-     * 
-     *   p > 3p^2 - 2p^3
-     * = 1 > 3p - 2p^2, [Took p common and cancelled it out]
-     * = 2p^2 - 3p + 1 > 0, [Shift: 3p - 2p^2 becomes 2p^2 - 3p]
-     * = (2p - 1)(p - 1) > 0, [Formula]
-     * 
-     * Both terms must be positive, or both must be negative. But we know p < 1, so p - 1 < 0. 
-     * This means both terms must be negative:
-     * 
-     *   2p - 1 < 0
-     * = 2p < 1, [Shift: - 1 becomes 1]
-     * = p < 0.5 [Shift & Divide: 1 / 2 = 0.5]
-     * 
-     * So, we should play Game 1 if 0 < p < 0.5 and Game 2 if 0.5 < p < 1. 
-     * If p = 0, 0.5, or 1, then P (Game 1) = P (Game 2), so it doesn't matter which game we play.
-     * 
-     * 
-     * Q45: Dominoes: There is an 8x8 chessboard in which two diagonally opposite corners have been cut off. You are given 31 dominoes, and a single domino can cover exactly two
-     *      squares. Can you use the 31 dominoes to cover the entire board? Prove your answer (by providing an example or showing why it's impossible).
-     * 
-     * At first, it seems like this should be possible. It's an 8 x 8 board, which has 64 squares, but two have been cut off, so we're down to 62 squares. A set of 31 dominoes
-     * should be able to fit there, right? When we try to lay down dominoes on row 1, which only has 7 squares, we may notice that one domino must stretch into the row 2. Then, when
-     * we try to lay down dominoes onto row 2, again we need to stretch a domino into row 3. For each row we place, we'll always have one domino that needs to poke into the next
-     * row. No matter how many times and ways we try to solve this issue, we won't be able to successfully lay down all the dominoes. There's a cleaner, more solid proof for why it
-     * won't work. The chessboard initially has 32 black and 32 white squares. By removing opposite corners (which must be the same color), we're left with 30 of one color and 32 of
-     * the other color. Let's say, for the sake of argument, that we have 30 black and 32 white squares. Each domino we set on the board will always take up one white and one black
-     * square. Therefore, 31 dominoes will take up 31 white squares and 31 black squares exactly. On this board, however, we must have 30 black squares and 32 white squares. Hence,
-     * it is impossible.
-     * 
-     * 
-     * Q46: Ants on a Triangle: There are three ants on different vertices of a triangle. What is the probability of collision (between any two or all of them) if they start walking
-     *      on the sides of the triangle? Assume that each ant randomly picks a direction, with either direction being equally likely to be chosen, and that they walk at the same
-     *      speed. Similarly, find the probability of collision with n ants on an n-vertex polygon.
-     *      
-     * The ants will collide if any of them are moving towards each other. So, the only way that they won't collide is if they are al l moving in the same direction (clockwise or
-     * counterclockwise).
-     * 
-     * P (clockwise) = (1 / 2)^3 
-     * P (counter clockwise) = (1 / 2)^3 
-     * P (same direction) = (1 / 2)^3 + (1 / 2)^3 = (1 / 4)
-     * 
-     * The probability of collision is therefore the probability of the ants not moving in the same direction:
-     * 
-     * P (collision) = 1 - P (same direction) = 1 - (1 / 4) = 3 / 4.
-     * 
-     * To generalize this to an n-vertex polygon: there are still only two ways in which the ants can move to avoid a collision, but there are 2n ways they can move in total.
-     * Therefore, in general, probability of collision is:
-     * 
-     * P (clockwise) = (1 / 2)^n 
-     * p (counter clockwise) = (1 / 2)^n 
-     * P (same direction) = 2 (1 / 2)^n = (1 / 2)^n-1, [(2) * (1 / 2)^n = (2) * (1^n / 2^n) {Solve bracket (1 / 2)^n}, = (2^1 / 2^n) {Cancel 2 with 2}, = (2^1 / 2^n) * (1) {Multipy
-     * by 1}, = (1 / 2^n-1) = (1 / 2)^n-1 {Law of exponenets = if base is the same exponents can be added or subtracted}]
-     * P (collision) = 1 - P (same direction) = 1 - (1 / 2)^n-1
-     * 
-     * 
-     * Q46: Jugs of Water: You have a five-quart jug, a three-quart jug, and an unlimited supply of water (but no measuring cups). How would you come up with exactly four quarts of
-     *      water? Note that the jugs are oddly shaped, such that filling up exactly "half" of the jug would be impossible.
-     *      
-     * Step 1: Fill 5-quart, [5 - 0]
-     * Step 2: Fill 3-quart with 5-quart's contents, [2, 3]
-     * Step 3: Dump 3-quart, [2, 0]
-     * Step 4: Fill 3-quart with 5-quart's contents, [0, 2]
-     * Step 5: Fill 5-quart, [5, 2]
-     * Step 6: Fill remainder of 3-quart with 5-quart, [4, 3]
-     * Step 7: There is no step 7 you fool, we have 4 quarts in the 5-quart jug
-     * 
-     * 
-     * Q47: Blue-Eyed Island: A bunch of people are living on an island, when a visitor comes with a strange order: all blue-eyed people must leave the island as soon as possible.
-     *      There will be a flight out at 8:00 pm every evening. Each person can see everyone else's eye color, but they do not know their own (nor is anyone allowed to tell them).
-     *      Additionally, they do not know how many people have blue eyes, although they do know that at least one person does. How many days will it take the blue-eyed people to
-     *      leave?
-     *      
-     * Assume that there are n people on the island and c of them have blue eyes. We are explicitly told that c > 8.
-     * 
-     * Case c = 1: Exactly one person has blue eyes. Assuming all the people are intelligent, the blue-eyed person should look around and realize that no one else has blue eyes.
-     * Since he knows that at least one person has blue eyes, he must conclude that it is he who has blue eyes. Therefore, he would take the flight that evening. 
-     * 
-     * Case c = 2: Exactly two people have blue eyes. The two blue-eyed people see each other, but are unsure whether c is 1 or 2. They know, from the previous case, that if c = 1,
-     * the blue-eyed person would leave on the first night. Therefore, if the other blue-eyed person is still there, he must deduce that c = 2, which means that he himself has blue
-     * eyes. Both men would then leave on the second night. 
-     * 
-     * Case c > 2: The General Case. As we increase c, we can see that this logic continues to apply. If c = 3, then those three people will immediately know that there are either
-     * 2 or 3 people with blue eyes. If there were two people, then those two people would have left on the second night. So, when the others are still around after that night, each
-     * person would conclude that c = 3 and that they, therefore, have blue eyes too. They would leave that night. This same pattern extends up through any value of c. Therefore, if
-     * c men have blue eyes, it will take c nights for the blue-eyed men to leave. All will leave on the same night.
-     * 
-     * 
-     * Q48: The Apocalypse: In the new post-apocalyptic world, the world queen is desperately concerned else they face massive fines. If all families abide by this policy-that is,
-     *      they continue to have children until they have one girl, at which point they immediately stop-what will the gender ratio of the new generation be? (Assume that the odds
-     *      of someone having a boy or a girl on any given pregnancy is equal.) Solve this out logically and then write a computer simulation of it.
-     * 
-     * At first glance, this seems wrong. The policy is designed to favor girls as it ensures that all families have a girl. On the other hand, the families that keep having
-     * children contribute (potentially) multiple boys to the population. This could offset the impact of the "one girl" policy. One way to think about this is to imagine that we
-     * put all the gender sequence of each family into one giant string. So if family 1 has BG, family 2 has BBG, and family 3 has G, we would write BGBBGG. In fact, we don't really
-     * care about the groupings of families because we're concerned about the population as a whole. As soon as a child is born, we can just append its gender (B or G) to the
-     * string. What are the odds of the next character being a G? Well, if the odds of having a boy and girl is the same, then the odds of the next character being a G is 50%.
-     * Therefore, roughly half of the string should be Gs and half should be Bs, giving an even gender ratio. This actually makes a lot of sense. Biology hasn't been changed. Half
-     * of newborn babies are girls and half are boys. Abiding by some rule about when to stop having children doesn't change this fact. Therefore, the gender ratio is 50% girls and
-     * 50% boys.
-    */
+    // Extra Questions:
+
+
+    // Q1: You have two ropes, and each takes exactly one hour to burn. How would you use them to time exactly 15 minutes? Note that the ropes are of uneven densities, so half the rope length-wise does not necessarily take half an hour to burn.
+
+    // Step 1: Light rope 1 at both ends and rope 2 at one end. 
+    // Step 2: When the two flames on Rope 1 meet. 30 minutes will have passed. Rope 2 has 30 minutes left of burn-time.
+    // Step 3: At that point, light Rope 2 at the other end. 
+    // Step 4: In exactly fifteen minutes, Rope 2 will be completely burnt.
+
+
+    // Q2: You have nine balls. Eight are of the same weight, and one is heavier. You are given a balance which tells you only whether the left side or the right side is heavier. Find the heavy ball in just two uses of the scale.
+
+    // Step 1: Divide the balls into sets of three items each.
+    // Step 2: Put first set of three balls on one side of the scale and second set on the other side.
+    // Step 3: If one of these sets is heavier then the heavier ball is in that set, if both sets have equal weight then the heavier ball is in the third set.
+    // Step 4: Take the set with the heavier ball, put one ball on each side of the scale and keep one ball off to the side.
+    // Step 5: One of the balls on the scale will be heavier or if the balls on the scale have equal weight the third ball is heavier.
+
+
+    // Q3: You have 8 guests on a birthday party and only one cake, the cake is perfectly round or square, divide the cake into 8 equal pieces in 3 cuts.
+
+    // Step 1: Cut the cake in half vertically from the top.
+    // Step 2: Cut the cake in half again horizontally from the top.
+    // Step 3: Cut the cake in half in the middle from the side
+
+
+    // Q43: The Heavy Pill: You have 20 bottles of pills. 19 bottles have 1.0 gram pills, but one has pills of weight 1.1 grams. Given a scale that provides an exact measurement, how would you find the heavy bottle? You can only use the scale once.
+
+    // If we took one pill from Bottle #1 and two pills from Bottle #2, what would the scale show? It depends. If Bottle #1 were the heavy bottle, we would get 3.1 grams. If Bottle #2 were the heavy bottle, we would get 3.2 grams.
+
+    // We know the "expected" weight of a bunch of pills. The difference between the expected weight and the actual weight will indicate which bottle contributed the heavier pills, provided we select a different number of pills from each bottle.
+
+    // Step 1: Take one pill from Bottle #1, two pills from Bottle #2, three pills from Bottle #3, and so on.
+    // Step 2: Weigh this mix of pills. If all pills were one gram each, the scale would read 210 grams. Any "overage" must come from the extra 0.1 gram pills.
+    // Step 3: Calculate the bottle number with the formula weight - 210grams / 0.1grams, So, if the set of pills weighed 211.3 grams, then Bottle #13 would have the heavy pills.
+
+
+    // Q44: Basketball: You have a basketball hoop and someone says that you can play one of two games. Game 1: You get one shot to make the hoop. Game 2: You get three shots and you have to make two of three shots. If p is the probability of making a particular shot, for which values of p should you pick one game or the other?
+
+    // Probability of winning Game 1: The probability of winning Game 1 is p, by definition. 
+    // Probability of winning Game 2: Let s(k, n) be the probability of making exactly k shots(s) out of n. The probability of winning Game 2 is the probability of making exactly two shots out of three OR making all three shots. In other words:
+
+    // P(winning) = s(2, 3) + s(3, 3)
+
+    // The probability of making all three shots is:
+
+    // s (3, 3) = p^3
+
+    // The probability of making exactly two shots is:
+
+    //   P(making 1 and 2, and missing 3) + P(making 1 and 3, and missing 2) + P(missing 1, and making 2 and 3):
+    // = p * p * (1 - p) + p * (1 - p) * p + (1 - p) * p * p, [p =  making, (1 - p) = missing]
+    // = 3 (1 - p) p^2
+
+    // Adding both probabilities together, we get:
+
+    //   p^3 + 3 (1 - p) p^2
+    // = p^3 + 3p^2 - 3p^3
+    // = 3p^2 - 2p^3, [Shift: 3p^2 - 3p^3 - p^3 = 3p^2 2p^3]
+
+    // Which game should you play? 
+    // You should play Game 1 if P (Game 1) > P (Game 2):
+
+    //   p > 3p^2 - 2p^3
+    // = 1 > 3p - 2p^2, [Took p common and canceled it out]
+    // = 2p^2 - 3p + 1 > 0, [Shift: 3p - 2p^2 becomes 2p^2 - 3p]
+    // = (2p - 1)(p - 1) > 0, [Formula]
+
+    // Both terms must be positive, or both must be negative. But we know p < 1, so p - 1 < 0. 
+    // This means both terms must be negative:
+
+    //   2p - 1 < 0
+    // = 2p < 1, [Shift: - 1 becomes 1]
+    // = p < 0.5 [Shift & Divide: 1 / 2 = 0.5]
+
+    // So, we should play Game 1 if 0 < p < 0.5 and Game 2 if 0.5 < p < 1. 
+    // If p = 0, 0.5, or 1, then P (Game 1) = P (Game 2), so it doesn't matter which game we play.
+
+
+    // Q45: Dominoes: There is an 8x8 chessboard in which two diagonally opposite corners have been cut off. You are given 31 dominoes, and a single domino can cover exactly two squares. Can you use the 31 dominoes to cover the entire board? Prove your answer (by providing an example or showing why it's impossible).
+
+    // At first, it seems like this should be possible. It's an 8 x 8 board, which has 64 squares, but two have been cut off, so we're down to 62 squares. A set of 31 dominoes should be able to fit there, right? When we try to lay down dominoes on row 1, which only has 7 squares, we may notice that one domino must stretch into the row 2. Then, when we try to lay down dominoes onto row 2, again we need to stretch a domino into row 3. For each row we place, we'll always have one domino that needs to poke into the next row. No matter how many times and ways we try to solve this issue, we won't be able to successfully lay down all the dominoes. There's a cleaner, more solid proof for why it won't work. The chessboard initially has 32 black and 32 white squares. By removing opposite corners (which must be the same color), we're left with 30 of one color and 32 of the other color. Let's say, for the sake of argument, that we have 30 black and 32 white squares. Each domino we set on the board will always take up one white and one black square. Therefore, 31 dominoes will take up 31 white squares and 31 black squares exactly. On this board, however, we must have 30 black squares and 32 white squares. Hence, it is impossible.
+
+    // Q46: Ants on a Triangle: There are three ants on different vertices of a triangle. What is the probability of collision (between any two or all of them) if they start walking on the sides of the triangle? Assume that each ant randomly picks a direction, with either direction being equally likely to be chosen, and that they walk at the same speed. Similarly, find the probability of collision with n ants on an n-vertex polygon.
+
+    // The ants will collide if any of them are moving towards each other. So, the only way that they won't collide is if they are all moving in the same direction (clockwise or counterclockwise).
+
+    // P (clockwise) = (1 / 2)^3 
+    // P (counter clockwise) = (1 / 2)^3 
+    // P (same direction) = (1 / 2)^3 + (1 / 2)^3 = (1 / 4)
+
+    // The probability of collision is therefore the probability of the ants not moving in the same direction:
+
+    // P (collision) = 1 - P (same direction) = 1 - (1 / 4) = 3 / 4.
+
+    // To generalize this to an n-vertex polygon: there are still only two ways in which the ants can move to avoid a collision, but there are 2n ways they can move in total.
+    // Therefore, in general, probability of collision is:
+
+    // P (clockwise) = (1 / 2)^n 
+    // p (counter clockwise) = (1 / 2)^n 
+    // P (same direction) = 2 (1 / 2)^n = (1 / 2)^n-1, [(2) * (1 / 2)^n = (2) * (1^n / 2^n) {Solve bracket (1 / 2)^n}, = (2^1 / 2^n) {Cancel 2 with 2}, = (2^1 / 2^n) * (1) {Multiply by 1}, = (1 / 2^n-1) = (1 / 2)^n-1 {Law of exponents = if base is the same exponents can be added or subtracted}]
+    // P (collision) = 1 - P (same direction) = 1 - (1 / 2)^n-1
+
+
+    // Q46: Jugs of Water: You have a five-quart jug, a three-quart jug, and an unlimited supply of water (but no measuring cups). How would you come up with exactly four quarts of water? Note that the jugs are oddly shaped, such that filling up exactly "half" of the jug would be impossible.
+
+    // Step 1: Fill 5-quart, [5 - 0]
+    // Step 2: Fill 3-quart with 5-quart's contents, [2, 3]
+    // Step 3: Dump 3-quart, [2, 0]
+    // Step 4: Fill 3-quart with 5-quart's contents, [0, 2]
+    // Step 5: Fill 5-quart, [5, 2]
+    // Step 6: Fill remainder of 3-quart with 5-quart, [4, 3]
+    // Step 7: There is no step 7 you fool, we have 4 quarts in the 5-quart jug
+
+
+    // Q47: Blue-Eyed Island: A bunch of people are living on an island, when a visitor comes with a strange order: all blue-eyed people must leave the island as soon as possible. There will be a flight out at 8:00 pm every evening. Each person can see everyone else's eye color, but they do not know their own (nor is anyone allowed to tell them). Additionally, they do not know how many people have blue eyes, although they do know that at least one person does. How many days will it take the blue-eyed people to leave?
+
+    // Assume that there are n people on the island and c of them have blue eyes. We are explicitly told that c > 8.
+
+    // Case c = 1: Exactly one person has blue eyes. Assuming all the people are intelligent, the blue-eyed person should look around and realize that no one else has blue eyes. Since he knows that at least one person has blue eyes, he must conclude that it is he who has blue eyes. Therefore, he would take the flight that evening. 
+
+    // Case c = 2: Exactly two people have blue eyes. The two blue-eyed people see each other, but are unsure whether c is 1 or 2. They know, from the previous case, that if c = 1, the blue-eyed person would leave on the first night. Therefore, if the other blue-eyed person is still there, he must deduce that c = 2, which means that he himself has blue eyes. Both men would then leave on the second night. 
+
+    // Case c > 2: The General Case. As we increase c, we can see that this logic continues to apply. If c = 3, then those three people will immediately know that there are either 2 or 3 people with blue eyes. If there were two people, then those two people would have left on the second night. So, when the others are still around after that night, each person would conclude that c = 3 and that they, therefore, have blue eyes too. They would leave that night. This same pattern extends up through any value of c. Therefore, if c men have blue eyes, it will take c nights for the blue-eyed men to leave. All will leave on the same night.
+
+
+    // Q48: The Apocalypse: In the new post-apocalyptic world, the world queen is desperately concerned else they face massive fines. If all families abide by this policy-that is, they continue to have children until they have one girl, at which point they immediately stop-what will the gender ratio of the new generation be? (Assume that the odds of someone having a boy or a girl on any given pregnancy is equal.) Solve this out logically and then write a computer simulation of it.
+
+    // At first glance, this seems wrong. The policy is designed to favor girls as it ensures that all families have a girl. On the other hand, the families that keep having children contribute (potentially) multiple boys to the population. This could offset the impact of the "one girl" policy. One way to think about this is to imagine that we put all the gender sequence of each family into one giant string. So if family 1 has BG, family 2 has BBG, and family 3 has G, we would write BGBBGG. In fact, we don't really care about the groupings of families because we're concerned about the population as a whole. As soon as a child is born, we can just append its gender (B or G) to the string. What are the odds of the next character being a G? Well, if the odds of having a boy and girl is the same, then the odds of the next character being a G is 50%. Therefore, roughly half of the string should be Gs and half should be Bs, giving an even gender ratio. This actually makes a lot of sense. Biology hasn't been changed. Half of newborn babies are girls and half are boys. Abiding by some rule about when to stop having children doesn't change this fact. Therefore, the gender ratio is 50% girls and 50% boys.
 }
 
 // Time complexity O(n), Space complexity O(1)
@@ -3510,26 +3464,18 @@ class TheEggDropProblem
     }
 }
 
-/* Q50: 100 Lockers: There are 100 closed lockers in a hallway. A man begins by opening all 100 lockers. Next, he closes every second locker. Then, on his third pass, he toggles every third locker(closes it if it is open or
- *      opens it if it is closed). This process continues for 100 passes, such that on each pass i, the man toggles every ith locker. After his 100th pass in the hallway, in which he toggles only locker #100, how many
- *      lockers are open?
- *      
- * A door n is toggled once for each factor of n, including itself and 1. That is, door 15 is toggled on rounds 1, 3,5, and 15. A door is left open if the number of factors (which we will call x) is odd. You can think about
- * this by pairing factors off as an open and a close. If there's one remaining, the door will be open. The value x is odd if n is a perfect square. Here's why: pair n's factors by their complements. For example, if n is 36,
- * the factors are (1, 36), (2, 18), (3, 12), (4, 9), (6,6). Note that (6, 6) only contributes one factor, thus giving n an odd number of factors. There are 10 perfect squares. You could count them (1 , 4,9, 16, 25,
- * 36,49,64, 81, 100)' or you could simply realize that you can take the numbers 1 through 10 and square them:
- * 
- * 1 * 1, 2 * 2, 3 * 3, ... , 10 * 10
- * 
- * Therefore, there are 10 lockers open at the end of this process.
- * 
- * 
- * Q51: Poison: You have 1000 bottles of soda, and exactly one is poisoned. You have 10 test strips which can be used to detect poison. A single drop of poison will turn the test strip positive permanently. You can put any
- *      number of drops on a test strip at once and you can reuse a test strip as many times as you'd like (as long as the results are negative). However, you can only run tests once per day and it takes seven days to return a
- *      result. How would you figure out the poisoned bottle in as few days as possible?
- * 
- * FOLLOW UP: Write code to simulate your approach.
-*/
+// Q50: 100 Lockers: There are 100 closed lockers in a hallway. A man begins by opening all 100 lockers. Next, he closes every second locker. Then, on his third pass, he toggles every third locker(closes it if it is open or opens it if it is closed). This process continues for 100 passes, such that on each pass i, the man toggles every ith locker. After his 100th pass in the hallway, in which he toggles only locker #100, how many lockers are open?
+
+// A door n is toggled once for each factor of n, including itself and 1. That is, door 15 is toggled on rounds 1, 3,5, and 15. A door is left open if the number of factors (which we will call x) is odd. You can think about this by pairing factors off as an open and a close. If there's one remaining, the door will be open. The value x is odd if n is a perfect square. Here's why: pair n's factors by their complements. For example, if n is 36, the factors are (1, 36), (2, 18), (3, 12), (4, 9), (6,6). Note that (6, 6) only contributes one factor, thus giving n an odd number of factors. There are 10 perfect squares. You could count them (1 , 4,9, 16, 25, 36,49,64, 81, 100)' or you could simply realize that you can take the numbers 1 through 10 and square them:
+
+// 1 * 1, 2 * 2, 3 * 3, ... , 10 * 10
+
+// Therefore, there are 10 lockers open at the end of this process.
+
+
+// Q51: Poison: You have 1000 bottles of soda, and exactly one is poisoned. You have 10 test strips which can be used to detect poison. A single drop of poison will turn the test strip positive permanently. You can put any number of drops on a test strip at once and you can reuse a test strip as many times as you'd like (as long as the results are negative). However, you can only run tests once per day and it takes seven days to return a result. How would you figure out the poisoned bottle in as few days as possible?
+
+// FOLLOW UP: Write code to simulate your approach.
 
 // Time complexity O(numBottles * log(numBottles)), Space complexity O(1)
 
@@ -3546,9 +3492,9 @@ class Poison
             int numStrips = 10;
 
             // Randomly select the poisoned bottle
-            int poisoneBottle = new Random().Next(numBottles);
+            int poisonBottle = new Random().Next(numBottles);
 
-            Console.WriteLine("Poisoned Bottle: " + poisoneBottle);
+            Console.WriteLine("Poisoned Bottle: " + poisonBottle);
 
             // Array to contain the test strips and keep track of strips with positive and negative results
             bool[] testStrips = new bool[numStrips];
@@ -3563,7 +3509,7 @@ class Poison
                 while (bottleNum > 0)
                 {
                     // Check if the bottle is poisoned
-                    if ((bottleNum & 1) == 1 && i == poisoneBottle)
+                    if ((bottleNum & 1) == 1 && i == poisonBottle)
                     {
                         // Set the test strip corresponding with the poisoned bottle to true
                         testStrips[stripNum] = true;
@@ -3725,7 +3671,7 @@ class DeckOfCards
 }
 
 
-// Q53: Call Center: Imagine you have a call center with three levels of employees: respondent, manager, and director. An incoming telephone call must be first allocated to a respondent who is free. If therespondent can't handle the call, he or she must escalate the call to a manager. If the manager is not free or not able to handle it, then the call should be escalated to a director. Design the classes and data structures for this problem. Implement a method dispatchCall() which assigns a call to the first available employee. (FHQ)
+// Q53: Call Center: Imagine you have a call center with three levels of employees: respondent, manager, and director. An incoming telephone call must be first allocated to a respondent who is free. If the respondent can't handle the call, he or she must escalate the call to a manager. If the manager is not free or not able to handle it, then the call should be escalated to a director. Design the classes and data structures for this problem. Implement a method dispatchCall() which assigns a call to the first available employee. (FHQ)
 
 class CallCenter
 {
@@ -3787,7 +3733,7 @@ class CallCenter
         }
     }
 
-    // Subclasses of the employee class to set the apropriate ranks of the employees
+    // Subclasses of the employee class to set the appropriate ranks of the employees
     public class Director : Employee
     {
         public Director() : base(null)
@@ -3905,7 +3851,7 @@ class CallCenter
             handler = e;
         }
 
-        // Method to send a mesaage to the caller
+        // Method to send a message to the caller
         public void Reply(string message)
         {
             // ...
@@ -3958,7 +3904,7 @@ class Jukebox
         private SongSelector ts;
 
         // Constructor
-        public JukeBox(CDPlayer cDPlayer, User user, HashSet<CD> cdCollerction, SongSelector ts)
+        public JukeBox(CDPlayer cDPlayer, User user, HashSet<CD> cdCollection, SongSelector ts)
         {
             // ...
         }
@@ -4053,7 +3999,7 @@ class Jukebox
             return queue.Peek();
         }
 
-        // Mehtod to add a song to the queue
+        // Method to add a song to the queue
         public void QueueUpSong(Song s)
         {
             queue.Enqueue(s);
@@ -4161,8 +4107,8 @@ class ParkingLot
         // Represents the parking spots occupied by the vehicle
         protected List<ParkingSpot> parkingSpots = new List<ParkingSpot>();
 
-        // Represents the liscence number of the vehicle
-        protected string licencePlate;
+        // Represents the license number of the vehicle
+        protected string licensePlate;
 
         // Represents the spots needed to park the vehicle
         protected int spotsNeeded;
@@ -4176,7 +4122,7 @@ class ParkingLot
             return spotsNeeded;
         }
 
-        // Mthod to get the size of the vehicle
+        // Method to get the size of the vehicle
         public VehicleSize GetSize()
         {
             return size;
@@ -4316,7 +4262,7 @@ class ParkingLot
             return false;
         }
 
-        // Method to check if the vehicle can be parked starting from a speciific spot
+        // Method to check if the vehicle can be parked starting from a specific spot
         private bool ParkStartingAtSpot(int num, Vehicle v)
         {
             // ...
@@ -4419,7 +4365,7 @@ class OnlineBookReader
         // Represents the book that is currently active for the user in the online reader system
         private Book activeBook;
 
-        // Represents the user currentlu active in the online reader system
+        // Represents the user currently active in the online reader system
         private SystemUser activeUser;
 
         // Constructor
@@ -4537,7 +4483,7 @@ class OnlineBookReader
             users = new Dictionary<int, SystemUser>();
         }
 
-        // Merhod to add a new user to the user manager
+        // Method to add a new user to the user manager
         public SystemUser AddUser(int id, string details, int accountType)
         {
             if (users.ContainsKey(id))
@@ -4708,7 +4654,7 @@ class OnlineBookReader
             this.accountType = accountType;
         }
 
-        // Mehtod do get the user's id
+        // Method do get the user's id
         public int GetUserId()
         {
             return userId;
@@ -4720,7 +4666,7 @@ class OnlineBookReader
             userId = id;
         }
 
-        // Method to get the account type fot the user
+        // Method to get the account type for the user
         public int GetAccountType()
         {
             return accountType;
@@ -4749,7 +4695,7 @@ class OnlineBookReader
 
 // Q57: Jigsaw: Implement an NxN jigsaw puzzle. Design the data structures and explain an algorithm to solve the puzzle.You can assume that you have a fitsWith method which, when passed two puzzle edges, returns true if the two edges belong together. (FHQ)
 
-// Defines the possible orientations for the edges of a puzzle piece
+// Possible orientations for the edges of a puzzle piece
 public enum Orientation
 {
     LEFT, TOP, RIGHT, BOTTOM
@@ -4781,7 +4727,7 @@ public static class OrientationMethods
     }
 }
 
-// Defines the possible shapes for the edges of a puzzle piece
+// Possible shapes for the edges of a puzzle piece
 public enum Shape
 {
     INNER, OUTER, FLAT
@@ -4916,7 +4862,7 @@ public class Edge
 }
 
 
-// Q58: Chat Server: Explain how you would design a chat server. In particular, provide details about the various backend components, classes, and methods. What would be the hardest problems to solve? (FHQ)
+// Q58: Chat Server: Explain how you would design a chat server. In particular, provide details about the various back-end components, classes, and methods. What would be the hardest problems to solve? (FHQ)
 
 class ChatServer
 {
@@ -4943,7 +4889,7 @@ class ChatServer
             return instance;
         }
 
-        // Mehtod to add a user to the user manager
+        // Method to add a user to the user manager
         public void AddUser(User fromUser, string toAccountName)
         {
             // ...
@@ -5233,7 +5179,7 @@ class ChatServer
     // Represents the status of a user
     public class UserStatus
     {
-        // Represents an otional message to be displayed on the status
+        // Represents an optional message to be displayed on the status
         private string message;
 
         // Represents the status type to be displayed
@@ -5251,7 +5197,7 @@ class ChatServer
             return UserStatusType.Offline;
         }
 
-        // Method to get the optional message being diplayed
+        // Method to get the optional message being displayed
         public string GetMessage()
         {
             return "";
@@ -5462,7 +5408,7 @@ class CircularArray
 
         // Method to convert external indices, as seen by users of the class, into internal indices in the underlying array
 
-        // Example: array = [A, B, C, D, E], Call Rotate(2), array stays the same but head = 2, so C is at index 0, whish is the head of the circular array
+        // Example: array = [A, B, C, D, E], Call Rotate(2), array stays the same but head = 2, so C is at index 0, which is the head of the circular array
         public int Convert(int index)
         {
             if (index < 0)
@@ -5611,7 +5557,7 @@ class Minesweeper
         private int nBombs = 0;
 
         // Number of remaining unexposed cells on the board
-        private int numUnxposedRemaining;
+        private int numUnexposedRemaining;
 
         // Represents the cells on the board
         private Cell[,] cells;
@@ -5653,7 +5599,7 @@ class Minesweeper
             // ...
         }
 
-        // Mehtod to uncover a cell based on user input
+        // Method to uncover a cell based on user input
         public UserPlayResult PlayFlip(UserPlay userPlay)
         {
             // ...
@@ -5664,7 +5610,7 @@ class Minesweeper
         // Method to get the number of remaining unexposed cells on the board
         public int GetUnexposedRemaining()
         {
-            return numUnxposedRemaining;
+            return numUnexposedRemaining;
         }
 
         // Method to shuffle the cells on the board randomly
@@ -5775,14 +5721,14 @@ class Minesweeper
     // Represents the result of a user’s move
     public class UserPlayResult
     {
-        // To check whether the move was successfull
+        // To check whether the move was successful
         private bool successful;
 
         // To get the resulting game state after a move by the player
         private Game.GameState resultingState;
     }
 
-    // Represents the oveall game
+    // Represents the overall game
     public class Game
     {
         // Represents the possible states of the game
@@ -5847,7 +5793,7 @@ class FileSystem
         // Timestamps to keep track of entry
         protected long created;
         protected long lastUpdated;
-        protected long lastAccecced;
+        protected long lastAccessed;
 
         // To store the name of the entry
         protected string name;
@@ -5859,7 +5805,7 @@ class FileSystem
             parent = p;
             created = DateTime.Now.Ticks;
             lastUpdated = DateTime.Now.Ticks;
-            lastAccecced = DateTime.Now.Ticks;
+            lastAccessed = DateTime.Now.Ticks;
         }
 
         // Method to delete an entry
@@ -5909,7 +5855,7 @@ class FileSystem
         // Method to get the time at which the entry was last accessed
         public long GetLastAccessedTime()
         {
-            return lastAccecced;
+            return lastAccessed;
         }
 
         // Method to change the name of the entry
@@ -6126,7 +6072,7 @@ class HashTable
 
             LinkedListNode current = arr[index];
 
-            // Searche for a node with the specified key in the bucket
+            // Search for a node with the specified key in the bucket
             while (current != null)
             {
                 if (current.key.Equals(key))
@@ -6141,7 +6087,7 @@ class HashTable
         // Helper method that takes a key as an argument and returns an index into the arr list
         private int GetIndexForKey(K key)
         {
-            // Calculates the index by taking the absolute value of the hash code of the key modulo the size of the arr list
+            // Calculate the index by taking the absolute value of the hash code of the key modulo the size of the arr list
             return Math.Abs(key.GetHashCode() % arr.Count);
         }
     }
@@ -6151,47 +6097,37 @@ class HashTable
 //                                                                   CHAPTER 10: SORTING & SEARCHING
 
 
-/* Common Sorting Algorithms:
- * 
- * 
- * Bubble Sort: [Runtime: O(n^2) average and worst case. Memory: O(1)]
- * 
- *              In bubble sort, we start at the beginning of the array and swap the first two elements if the first is greater than the second. Then, we go to the next pair, and so on, continuously making sweeps of the array
- *              until it is sorted. In doing so, the smaller items slowly"bubble" up to the beginning of the list.
- *              
- *              
- * Selection Sort: [Runtime: O(n^2) average and worst case. Memory: O(1)]
- * 
- *                 Selection sort is the child's algorithm: simple, but inefficient. Find the smallest element using a linear scan and move it to the front (swapping it with the front element). Then, find the second smallest and
- *                 move it, again doing a linear scan. Continue doing this until all the elements are in place. 
- *                 
- *                 
- * Merge Sort: [Runtime: O(n log(n)) average and worst case. Memory: Depends] 
- * 
- *             Merge sort divides the array in half, sorts each of those halves, and then merges them back together. Each of those halves has the same sorting algorithm applied to it. Eventually, you are merging just two single
- *             element arrays. It is the "merge" part that does all the heavy lifting. 
- * 
- * 
- * Quick Sort: [Runtime: O(n log(n)) average, O(n2) worst case. Memory: O(log(n))]
- * 
- *             In quick sort, we pick a random element and partition the array, such that all numbers that are less than the partitioning element come before all elements that are greater than it. The partitioning can be
- *             performed efficiently through a series of swaps.
- *             
- *             
- * Radix Sort: [Runtime: O(kn)] 
- * 
- *             Radix sort is a sorting algorithm for integers (and some other data types) that takes advantage of the fact that integers have a finite number of bits. In radix sort, we iterate through each digit of the number, 
- *             grouping numbers by each digit. For example, if we have an array of integers, we might first sort by the first digit, so that the 0s are grouped together. Then, we sort each of these groupings by the next digit.
- *             We repeat this process sorting by each subsequent digit. until finally the whole array is sorted.
- *             
- *             
- * Searching Algorithms:
- * 
- * 
- * Binary Search: In binary search, we look for an element x in a sorted array by first comparing x to the midpoint of the array. If x is less than the midpoint, then we search the left half of the array. If x is greater than
- *                the midpoint, then we search the right half of the array. We then repeat this process, treating the left and right halves as subarrays. Again, we compare x to the midpoint of this subarray and then search
- *                either its left or right side. We repeat this process until we either find x or the subarray has size O.
-*/
+// Common Sorting Algorithms:
+
+
+// Bubble Sort: [Runtime: O(n^2) average and worst case. Memory: O(1)]
+
+// In bubble sort, we start at the beginning of the array and swap the first two elements if the first is greater than the second. Then, we go to the next pair, and so on, continuously making sweeps of the array until it is sorted. In doing so, the smaller items slowly"bubble" up to the beginning of the list.
+
+
+// Selection Sort: [Runtime: O(n^2) average and worst case. Memory: O(1)]
+
+// Selection sort is the child's algorithm: simple, but inefficient. Find the smallest element using a linear scan and move it to the front (swapping it with the front element). Then, find the second smallest and move it, again doing a linear scan. Continue doing this until all the elements are in place. 
+
+
+// Merge Sort: [Runtime: O(n log(n)) average and worst case. Memory: Depends] 
+
+// Merge sort divides the array in half, sorts each of those halves, and then merges them back together. Each of those halves has the same sorting algorithm applied to it. Eventually, you are merging just two single element arrays. It is the "merge" part that does all the heavy lifting. 
+
+
+// Quick Sort: [Runtime: O(n log(n)) average, O(n2) worst case. Memory: O(log(n))]
+
+// In quick sort, we pick a random element and partition the array, such that all numbers that are less than the partitioning element come before all elements that are greater than it. The partitioning can be performed efficiently through a series of swaps.
+
+
+// Radix Sort: [Runtime: O(kn)] 
+
+// Radix sort is a sorting algorithm for integers (and some other data types) that takes advantage of the fact that integers have a finite number of bits. In radix sort, we iterate through each digit of the number, grouping numbers by each digit. For example, if we have an array of integers, we might first sort by the first digit, so that the 0s are grouped together. Then, we sort each of these groupings by the next digit. We repeat this process sorting by each subsequent digit. until finally the whole array is sorted.
+
+
+// Searching Algorithms:
+
+// Binary Search: In binary search, we look for an element x in a sorted array by first comparing x to the midpoint of the array. If x is less than the midpoint, then we search the left half of the array. If x is greater than the midpoint, then we search the right half of the array. We then repeat this process, treating the left and right halves as sub-arrays. Again, we compare x to the midpoint of this sub-array and then search either its left or right side. We repeat this process until we either find x or the sub-array has size O.
 
 
 // Q63: Sorted Merge: You are given two sorted arrays, A and B, where A has a large enough buffer at the end to hold B. Write a method to merge B into A in sorted order.
@@ -6245,7 +6181,7 @@ class GroupAnagrams
         // Go through each string in the input array
         foreach (var s in array)
         {
-            // Sorts the characters in s
+            // Sort the characters in s
             var key = SortChars(s);
 
             // If the key is not already in the dictionary, add it with an empty list as its value
@@ -6297,7 +6233,891 @@ class GroupAnagrams
 // EXAMPLE: Input: Find 5 in {15, 16, 19, 20, 25, 1, 3, 4, 5, 7, 10, 14}
 //          Output: 8 (the index of 5 in the array)
 
+// Time complexity O(n), Space complexity O(log n)
+
 class SearchInRotatedArray
+{
+    static int Search(int[] numbers, int left, int right, int target)
+    {
+        // Calculate midpoint
+        int mid = (left + right) / 2;
+
+        // Target element is found
+        if (target == numbers[mid])
+        {
+            return mid;
+        }
+
+        // Check if the search range is empty
+        if (right < left)
+        {
+            return -1;
+        }
+
+        // Left is normally ordered
+        if (numbers[left] < numbers[mid])
+        {
+            // Check if target is in the left half
+            if (target >= numbers[left] && target < numbers[mid])
+            {
+                // Search left
+                return Search(numbers, left, mid - 1, target);
+            }
+            else
+            {
+                // Search right
+                return Search(numbers, mid + 1, right, target);
+            }
+        }
+
+        // Right is normally ordered
+        else if (numbers[left] > numbers[mid])
+        {
+            // Check if target is in the right half
+            if (target <= numbers[right] && target > numbers[mid])
+            {
+                // Search right
+                return Search(numbers, mid + 1, right, target);
+            }
+            else
+            {
+                // Search left
+                return Search(numbers, left, mid - 1, target);
+            }
+        }
+
+        // If the elements int the left and mid are equal
+        else if (numbers[left] == numbers[mid])
+        {
+            // Check if elements at mid and right are different
+            if (numbers[right] != numbers[mid])
+            {
+                // Search right
+                return Search(numbers, mid + 1, right, target);
+            }
+
+            // Elements at left, mid and right are equal
+            else
+            {
+                // Search both halves
+                int result = Search(numbers, left, mid - 1, target);
+
+                if (result == -1)
+                {
+                    return Search(numbers, mid + 1, right, target);
+                }
+                else
+                {
+                    // Return the result if found in either half
+                    return result;
+                }
+            }
+        }
+        // Target was not found
+        return -1;
+    }
+}
+
+
+// Q66: Sorted Search, No Size: You are given an array-like data structure Listy which lacks a size method. It does, however, have an elementAt (i) method that returns the element at index i in 0(1) time. If i is beyond the bounds of the data structure, it returns - 1. (For this reason, the data structure only supports positive integers.) Given a Listy which contains sorted, positive integers, find the index at which an element x occurs. If x occurs multiple times, you may return any index.
+
+// Time complexity O(log n), Space complexity O(1)
+
+class SortedSearch
+{
+    // Class to avoid errors
+    public class Listy
+    {
+        public Listy()
+        {
+            // ...
+        }
+
+        public int elementAt(int index)
+        {
+            return index;
+        }
+    }
+
+    int Search(Listy list, int value)
+    {
+        int index = 1;
+
+        // Double the value of index until the end of the list is found or the target value is found to be at a later index than the current index
+        while (list.elementAt(index) != -1 && list.elementAt(index) < value)
+        {
+            index *= 2;
+        }
+
+        // Perform binary search on the list
+        return BinarySearch(list, value, index / 2, index);
+    }
+
+    // Method to perform binary search on the input list
+    int BinarySearch(Listy list, int value, int low, int high)
+    {
+        int mid;
+
+        // Iterate through the elements of the list till the value is found
+        while (low <= high)
+        {
+            // Calculate midpoint
+            mid = (low + high) / 2;
+
+            // Get the element at midpoint
+            int middle = list.elementAt(mid);
+
+            // Check if the middle element is greater than the target value or we are past the end of the list
+            if (middle > value && middle == -1)
+            {
+                // Search in lower indices
+                high = mid - 1;
+            }
+
+            // The middle element is smaller than the target value
+            else if (middle < value)
+            {
+                // Search in higher indices
+                low = mid + 1;
+            }
+
+            // The middle element is equal the target value
+            else
+            {
+                return mid;
+            }
+        }
+
+        // Target value was not found in the list
+        return -1;
+    }
+}
+
+
+// Q67: Sparse Search: Given a sorted array of strings that is interspersed with empty strings, write a method to find the location of a given string.
+
+// EXAMPLE: Input: ball, {"at", "", "", "", "ball", "", "", "car", "", "", "dad", "", ""}
+//          Output: 4
+
+// Time complexity O(log n), Space complexity O(log n)
+
+class SparseSearch
+{
+    int Search(string[] strings, string str, int first, int last)
+    {
+        // Check if the search range is empty
+        if (first > last)
+        {
+            return -1;
+        }
+
+        // Calculate midpoint
+        int mid = (last + first) / 2;
+
+        // Check if the string at midpoint is empty
+        if (!string.IsNullOrEmpty(strings[mid]))
+        {
+            // Initialize left and right indices of the midpoint
+            int left = mid - 1;
+            int right = mid + 1;
+
+            // Iterate through the array until out of bounds or a non-empty string is found
+            while (true)
+            {
+                // Out of the bounds of the array
+                if (left < first && right > last)
+                {
+                    return -1;
+                }
+
+                // Non-empty string found on the right of the midpoint
+                else if (right <= last && !string.IsNullOrEmpty(strings[right]))
+                {
+                    mid = right;
+                    break;
+                }
+
+                // Non-empty string found on the left of the midpoint
+                else if (left >= first && !string.IsNullOrEmpty(strings[left]))
+                {
+                    mid = left;
+                    break;
+                }
+
+                right++;
+                left--;
+            }
+        }
+
+        // If the string at midpoint is equal to the target string
+        if (str.Equals(strings[mid]))
+        {
+            return mid;
+        }
+
+        // the target string is lexicographically greater than the string at midpoint
+        else if (string.Compare(strings[mid], str) < 0)
+        {
+            // Search on the right side
+            return Search(strings, str, mid + 1, last);
+        }
+
+        // the target string is lexicographically less than the string at midpoint
+        else
+        {
+            // Search on the left side
+            return Search(strings, str, first, mid - 1);
+        }
+
+        // Helper method for the main search function
+        int SearchHelper(string[] strings, string str)
+        {
+            if (strings == null || str == null || str == "")
+            {
+                return -1;
+            }
+
+            // Call to the search function with full range of the input array
+            return Search(strings, str, 0, strings.Length - 1);
+        }
+    }
+}
+
+
+// Q68: Sort Big File: Imagine you have a 20 GB file with one string per line. Explain how you would sort the file.
+
+// We'll divide the file into chunks, which are x megabytes each, where x is the amount of memory we have available. Each chunk is sorted separately and then saved back to the file system. Once all the chunks are sorted, we merge the chunks, one by one. At the end, we have a fully sorted file. This algorithm is known as external sort.
+
+
+// Q69: Missing Int: Given an input file with four billion non-negative integers, provide an algorithm to generate an integer that is not contained in the file. Assume you have 1 GB of memory available for this task. (FHQ)
+
+// Time complexity O(n), Space complexity O(1)
+
+class MissingInt
+{
+    // Calculate the number of integers that can be represented by an int
+    static long numberOfInts = ((long)int.MaxValue + 1);
+
+    // Create a bitfield(array of bytes), each byte in the array represents 8 integers, size of the array is the total number of int values divided by 8, rounded down
+    byte[] bitfield = new byte[(int)(numberOfInts / 8)];
+
+    // Filename of the file to be read
+    string fileName = "...";
+
+    void FindOpenNumber()
+    {
+        // Open the file with the given filename for reading
+        using (StreamReader sr = new StreamReader(fileName))
+        {
+            string line;
+
+            // Read each line from the file, parse it as an integer, and set the corresponding bit in the bitfield to 1
+            while ((line = sr.ReadLine()) != null)
+            {
+                int n = int.Parse(line);
+
+                // Set the current bit of the bitfield to 1
+                bitfield[n / 8] |= (byte)(1 << (n % 8));
+            }
+        }
+
+        // Iterate over each bit in the bitfield
+        for (int i = 0; i < bitfield.Length; i++)
+        {
+            for (int j = 0; j < 8; j++)
+            {
+                // Check if a bit is found that is still 0 (integer not present in the file)
+                if ((bitfield[i] & (1 << j)) == 0)
+                {
+                    // Print and return the integer not present in the file
+                    Console.WriteLine(i * 8 + j);
+
+                    return;
+                }
+            }
+        }
+    }
+
+
+    // FOLLOW UP: What if you have only 10MB of memory? Assume that all the values are distinct and we now have no more than one billion non-negative integers.
+
+    // Time complexity O(n), Space complexity O(1)
+
+    public int FindNumber(string fileName)
+    {
+        // Set the range size to 2^20, which is about one million
+        int rangeSize = (1 << 20);
+        int[] blocks = GetCountPerBlock(fileName, rangeSize);
+        int blockIndex = FindBlockWithMissing(blocks, rangeSize);
+
+        // Check if all numbers are already present in the array
+        if (blockIndex < 0)
+        {
+            return -1;
+        }
+
+        byte[] bitVector = GetBitVectorForRange(fileName, blockIndex, rangeSize);
+
+        int offset = FindZero(bitVector);
+
+        // Check if no zero bit is found, it means all numbers are present in this range
+        if (offset < 0)
+        {
+            return -1;
+        }
+
+        // Zero bit is found, calculate the corresponding number and return it
+        return rangeSize * blockIndex + offset;
+    }
+
+    // Method to read the file and return an array where each element represents the count of numbers in a specific range in the file
+    int[] GetCountPerBlock(string fileName, int rangeSize)
+    {
+        int arraySize = int.MaxValue / rangeSize + 1;
+        int[] blocks = new int[arraySize];
+
+        using (StreamReader sr = new StreamReader(fileName))
+        {
+            string line;
+
+            while ((line = sr.ReadLine()) != null)
+            {
+                int value = int.Parse(line);
+                blocks[value / rangeSize]++;
+            }
+        }
+        return blocks;
+    }
+
+    // Method to find the first block that contains less than rangeSize numbers. This means that there must be at least one number missing in this range
+    int FindBlockWithMissing(int[] blocks, int rangeSize)
+    {
+        for (int i = 0; i < blocks.Length; i++)
+        {
+            if (blocks[i] < rangeSize)
+            {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    // Method to create a bit vector for the found block's range. Each bit in the vector represents whether a number is present in the file
+    byte[] GetBitVectorForRange(string fileName, int blockIndex, int rangeSize)
+    {
+        int startRange = blockIndex * rangeSize;
+        int endRange = startRange + rangeSize;
+
+        byte[] bitVector = new byte[rangeSize / 8];
+
+        using (StreamReader sr = new StreamReader(fileName))
+        {
+            string line;
+
+            while ((line = sr.ReadLine()) != null)
+            {
+                int value = int.Parse(line);
+
+                if (startRange <= value && value < endRange)
+                {
+                    int offset = value - rangeSize;
+                    bitVector[offset / 8] |= (byte)(1 << (offset % 8));
+                }
+            }
+        }
+        return bitVector;
+    }
+
+    // Helper method for the FindZero method
+    int FindZero(byte b)
+    {
+        for (int i = 0; i < 8; i++)
+        {
+            if ((b & (1 << i)) == 0)
+            {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    // Method to find the first zero bit in the bit vector, which represents the first missing number in the range
+    int FindZero(byte[] bitVector)
+    {
+        for (int i = 0; i < bitVector.Length; i++)
+        {
+            if (bitVector[i] != ~0)
+            {
+                int bitIndex = FindZero(bitVector[i]);
+
+                return i * 8 + bitIndex;
+            }
+        }
+        return -1;
+    }
+}
+
+
+// Q70: Find Duplicates: You have an array with all the numbers from 1 to N, where N is at most 32,000. The array may have duplicate entries and you do not know what N is. With only 4 kilobytes of memory available, how would you print all duplicate elements in the array?
+
+// Time complexity O(n), Space complexity O(n)
+
+class FindDuplicates
+{
+    void CheckDuplicates(int[] array)
+    {
+        // Create a new BitSet object that can hold 32000 bits
+        BitSet bs = new BitSet(32000);
+
+        // Iterate over each element in the input array
+        for (int i = 0; i < array.Length; i++)
+        {
+            // Get the current number from the array and subtract one to get the index for the BitSet
+            int num = array[i];
+            int num0 = num - 1;
+
+            // Check if the bit at index num0 in the BitSet is set. If it is, it means the number is a duplicate, so print the number
+            if (bs.Get(num0))
+            {
+                Console.WriteLine(num);
+            }
+
+            // The bit at num0 in the BitSet is not set, set the bit to mark that this number has been seen
+            else
+            {
+                bs.Set(num0);
+            }
+        }
+    }
+
+    // Simple implementation of a bit vector
+    public class BitSet
+    {
+        // Array of integers, where each bit in an integer represents whether a number is present (bit is set) or absent (bit is not set)
+        int[] bitset;
+
+        public BitSet(int size)
+        {
+            bitset = new int[(size >> 5) + 1];
+        }
+
+        // Method to check if a bit at a specific position is set
+        public bool Get(int pos)
+        {
+            int wordNumber = (pos >> 5);
+            int bitNumber = (pos & 0x1F);
+
+            return (bitset[wordNumber] & (1 << bitNumber)) != 0;
+        }
+
+        // Method to set a bit at a specific position
+        public void Set(int pos)
+        {
+            int wordNumber = (pos >> 5);
+            int bitNumber = (pos & 0x1F);
+
+            bitset[wordNumber] |= 1 << bitNumber;
+        }
+    }
+}
+
+
+// Q71: Sorted Matrix Search: Given an M x N matrix in which each row and each column is sorted in ascending order, write a method to find an element.
+
+// Time complexity O(log n), Space complexity O(1)
+
+class SortedMatrixSearch
+{
+    public class Coordinate : ICloneable
+    {
+        // Current Row and column of the matrix
+        public int row, column;
+
+        // Constructor
+        public Coordinate(int r, int c)
+        {
+            row = r;
+            column = c;
+        }
+
+        // Method to check if the coordinate is within the bounds of the matrix
+        public bool InBounds(int[,] matrix)
+        {
+            return row >= 0 && column >= 0 && row < matrix.GetLength(0) && column < matrix.GetLength(1);
+        }
+
+        // Method to check if current coordinate comes before another coordinate
+        public bool IsBefore(Coordinate p)
+        {
+            return row <= p.row && column <= p.column;
+        }
+
+        // Method to create a copy of current coordinate
+        public object Clone()
+        {
+            return new Coordinate(row, column);
+        }
+
+        // Method to set current coordinate to the average of two other coordinates
+        public void SetToAverage(Coordinate min, Coordinate max)
+        {
+            row = (min.row + max.row) / 2;
+            column = (min.column + max.column) / 2;
+        }
+    }
+
+    // Overloaded Method to search for x in the sub-matrix defined by the origin and destination coordinates
+    Coordinate FindElement(int[,] matrix, Coordinate origin, Coordinate destination, int x)
+    {
+        if (!origin.InBounds(matrix) || !destination.InBounds(matrix))
+        {
+            return null;
+        }
+
+        if (matrix[origin.row, origin.column] == x)
+        {
+            return origin;
+        }
+        else if (!origin.IsBefore(destination))
+        {
+            return null;
+        }
+
+        int diagonalDistance = Math.Min(destination.row - origin.row, destination.column - origin.column);
+
+        Coordinate start = (Coordinate)origin.Clone();
+        Coordinate end = new Coordinate(start.row + diagonalDistance, start.column + diagonalDistance);
+        Coordinate p = new Coordinate(0, 0);
+
+        while (start.IsBefore(end))
+        {
+            p.SetToAverage(start, end);
+
+            if (x > matrix[p.row, p.column])
+            {
+                start.row = p.row + 1;
+                start.column = p.column + 1;
+            }
+            else
+            {
+                end.row = p.row - 1;
+                end.column = p.column - 1;
+            }
+        }
+
+        return PartitionAndSearch(matrix, origin, destination, start, x);
+    }
+
+    // Method to partition the matrix into two halves and recursively search in the appropriate half
+    Coordinate PartitionAndSearch(int[,] matrix, Coordinate origin, Coordinate destination, Coordinate pivot, int x)
+    {
+        Coordinate lowerLeftOrigin = new Coordinate(pivot.row, origin.column);
+        Coordinate lowerLeftDestination = new Coordinate(destination.row, pivot.column - 1);
+        Coordinate upperRightOrigin = new Coordinate(origin.row, pivot.column);
+        Coordinate upperRightDestination = new Coordinate(pivot.row - 1, destination.column);
+
+        Coordinate lowerLeft = FindElement(matrix, lowerLeftOrigin, lowerLeftDestination, x);
+
+        if (lowerLeft == null)
+        {
+            return FindElement(matrix, upperRightOrigin, upperRightDestination, x);
+        }
+
+        return lowerLeft;
+    }
+
+    // Method to search for x in the entire matrix
+    Coordinate FindElement(int[,] matrix, int x)
+    {
+        Coordinate origin = new Coordinate(0, 0);
+        Coordinate destination = new Coordinate(matrix.GetLength(0) - 1, matrix.GetLength(1) - 1);
+
+        return FindElement(matrix, origin, destination, x);
+    }
+}
+
+
+// Q72: Rank from Stream: Imagine you are reading in a stream of integers. Periodically, you wish to be able to look up the rank of a number x (the number of values less than or equal to x). Implement the data structures and algorithms to support these operations. That is, implement the method track(int x), which is called when each number is generated, and the method getRankOfNumber(int x), which returns the number of values less than or equal to x (not including x itself). 
+
+// EXAMPLE: Stream(in order of appearance): 5, 1, 4, 4, 5, 9, 7, 13, 3
+//          getRankOfNumber(1) = 0
+//          getRankOfNumber(3) = 1
+//          getRankOfNumber(4) = 3
+
+// Time complexity O(n), Space complexity O(n)
+
+class RankFromStream
+{
+    // Represents a node in the binary search tree
+    public class RankNode
+    {
+        // Size of the left subtree
+        public int leftSize = 0;
+
+        // Value of the node
+        public int data = 0;
+
+        // Pointers to the left and right child nodes
+        public RankNode left, right;
+
+        // Constructor
+        public RankNode(int d)
+        {
+            data = d;
+        }
+
+        // Method to insert a number into the BST
+        public void Insert(int d)
+        {
+            // If the number is less than or equal to the current node’s data, it goes to the left subtree
+            if (d <= data)
+            {
+                if (left != null)
+                {
+                    left.Insert(d);
+                }
+                else
+                {
+                    left = new RankNode(d);
+
+                    leftSize++;
+                }
+            }
+
+            // The number is greater than the current node’s data, it goes to the right subtree
+            else
+            {
+                if (right != null)
+                {
+                    right.Insert(d);
+                }
+                else
+                {
+                    right = new RankNode(d);
+                }
+            }
+        }
+
+        // Method to return the rank of a number in the BST
+        public int GetRank(int d)
+        {
+            // If the number is equal to the current node’s data, return leftSize
+            if (d == data)
+            {
+                return leftSize;
+            }
+
+            // If the number is less than the current node’s data, it goes to the left subtree
+            else if (d < data)
+            {
+                if (left == null)
+                {
+                    return -1;
+                }
+                else
+                {
+                    return left.GetRank(d);
+                }
+            }
+
+            // The number is greater than the current node’s data, it goes to the right subtree and adds left_size + 1 to the rank
+            else
+            {
+                int rightRank = right == null ? -1 : right.GetRank(d);
+
+                if (rightRank == -1)
+                {
+                    return -1;
+                }
+                else
+                {
+                    return leftSize + 1 + rightRank;
+                }
+            }
+        }
+    }
+
+    // To track numbers and their ranks
+    public class RankTracker
+    {
+        // Root node of the BST
+        private RankNode root = null;
+
+        // Method to insert a number into the BST
+        public void Tracker(int number)
+        {
+            if (root == null)
+            {
+                root = new RankNode(number);
+            }
+            else
+            {
+                root.Insert(number);
+            }
+        }
+
+        // Method to return the rank of a number
+        public int GetRankOfNumber(int number)
+        {
+            if (root == null)
+            {
+                return -1;
+            }
+
+            return root.GetRank(number);
+        }
+    }
+}
+
+
+// Q73: Peaks and Valleys: In an array of integers, a "peak" is an element which is greater than or equal to the adjacent integers and a "valley" is an element which is less than or equal to the adjacent integers. For example, in the array {S, 8, 6, 2, 3, 4, 6}, { 8, 6} are peaks and {S, 2} are valleys. Given an array of integers, sort the array into an alternating sequence of peaks and valleys. 
+
+// EXAMPLE: Input: { 5, 3, 1, 2, 3}
+//          Output: { 5, 1,3, 2, 3}
+
+// Time complexity O(n), Space complexity O(1)
+
+class PeaksAndValleys
+{
+    public class SortValleyPeak
+    {
+        public void Sort(int[] array)
+        {
+            // Iterate over the array, jumping two indices at a time
+            for (int i = 1; i < array.Length; i += 2)
+            {
+                // Find the maximum of the current element and its neighbours 
+                int biggestIndex = MaxIndex(array, i - 1, i, i + 1);
+
+                // Swap the current element with the maximum if the current element is not already the maximum
+                if (i != biggestIndex)
+                {
+                    Swap(array, i, biggestIndex);
+                }
+            }
+        }
+
+        // Method to return the index out of the three that has the maximum value and if an index is out of the bounds of the array, assign it a value of int.MinValue
+        public int MaxIndex(int[] array, int a, int b, int c)
+        {
+            int len = array.Length;
+            int aValue = (a >= 0 && a < len) ? array[a] : int.MinValue;
+            int bValue = (b >= 0 && b < len) ? array[b] : int.MinValue;
+            int cValue = (c >= 0 && c < len) ? array[c] : int.MinValue;
+            int max = Math.Max(aValue, Math.Max(bValue, cValue));
+
+            if (aValue == max)
+            {
+                return a;
+            }
+            else if (bValue == max)
+            {
+                return b;
+            }
+            else
+            {
+                return c;
+            }
+        }
+
+        // Method to swap the elements at two given indices in the array
+        public void Swap(int[] array, int i, int j)
+        {
+            int temp = array[i];
+            array[i] = array[j];
+            array[j] = temp;
+        }
+    }
+}
+
+
+//                                                                   CHAPTER 11: TESTING
+
+
+// Q74: Mistake: Find the mistake(s) in the following code:
+
+//      uint i;
+//      for (i = 100; i >= 0; i--)
+//      {
+//          Console.WriteLine("{0}", i);
+//      }
+
+// Unsigned int is, by definition, always greater than or equal to zero. The for loop condition will therefore always be true, and it will loop infinitely.
+
+// Correct code
+class Mistake
+{
+    void CorrectCode()
+    {
+        uint i;
+
+        for (i = 100; i > 0; i--)
+        {
+            Console.WriteLine("{0}", i);
+        }
+    }
+}
+
+
+// Q75: Random Crashes: You are given the source to an application which crashes when it is run. After running it ten times in a debugger, you find it never crashes in the same place. The application is single threaded, and uses only the C standard library. What programming errors could be causing this crash? How would you test each one?
+
+// 1. Random Variable: The application may use some random number or variable component that may not be fixed for every execution of the program. Examples include user input, a random number generated by the program, or the time of day.
+
+// 2. Uninitialized Variable: The application could have an uninitialized variable which, in some languages, may cause it to take on an arbitrary value. The values of this variable could result in the code taking a slightly different path each time.
+
+// 3. Memory Leak: The program may have run out of memory. Other culprits are totally random for each run since it depends on the number of processes running at that particular time. This also includes heap overflow or corruption of data on the stack.
+
+// 4. External Dependencies: The program may depend on another application, machine, or resource. If there are multiple dependencies, the program could crash at any point.
+
+
+// Q76: Chess Test: We have the following method used in a chess game: boolean canMoveTo( int X, int y). This method is part of the Piece class and returns whether or not the piece can move to position (x, y). Explain how you would test this method.
+
+// foreach piece a:
+//   for each other type of piece b (6 types + empty space)
+//     for each direction d
+//       Create a board with piece a.
+//       Place piece b in direction d.
+//       Try to move - check return value.
+
+
+// Q77: No Test Tools: How would you load test a web page without using any test tools?
+
+// In the absence of formal testing tools, we can basically create our own. For example, we could simulate concurrent users by creating thousands of virtual users. We would write a multi-threaded program with thousands of threads, where each thread acts as a real-world user loading the page. For each user, we would programmatically measure response time, system load etc.
+
+
+// Q78: Test a Pen: How would you test a pen?
+
+// Questions about the pen: 1. Who is going to use the pen?
+//                          2. Will it be used for writing, drawing, or doing something else with it?
+//                          3. What surface will it be used on? Paper? Clothing? Walls? etc.
+//                          4. What kind of tip does the pen have? Felt? Ballpoint? Is it intended to wash off, or is it intended to be permanent?
+
+// Solution: Fact check: Verify that the pen has the correct tip and that the ink is one of the allowed colors.
+//           Intended use: Does the pen write properly on the intended surface?
+//           Intended use: Does it wash off of the surface? Does it wash off in hot, warm and cold water?
+//           Safety: Is the pen safe (non-toxic) for the user?
+//           Unintended uses: How else might the user use the pen? They might write on other surfaces, so you need to check whether the behavior there is correct. They might also stomp on the pen, throw it, and so on.
+
+
+// Q79: Test an ATM: How would you test an ATM in a distributed banking system?
+
+// Questions about the ATM: 1. Who is going to use the ATM? Anyone? Blind people? etc.
+//                          2. What are they going to use it for? Withdrawing money? Transferring money? Checking their balance? etc.
+//                          3. What tools do we have to test? Do we have access to the code, or just to the ATM?
+
+// Solution Methods:
+
+// Manual Testing: Manual testing would involve making sure to check for all the error cases (logging in, withdrawing money, depositing money, checking balance, transferring money, low balance, new account, nonexistent account, and so on).
+
+// Automated Testing: Automated testing is a bit more complex. We'll want to automate all the standard scenarios, and we also want to look for some very specific issues, such as race conditions. Ideally, we would be able to set up a closed system with fake accounts and ensure that, even if someone withdraws and deposits money rapidly from different locations, he never gets money or loses money that he shouldn't.
+
+
+//                                                                   CHAPTER 16: MODERATE
+
+
+// Q80: Number Swapper: Write a function to swap a number in place (that is, without temporary variables).
+
+class NumberSwapper
 {
 
 }
