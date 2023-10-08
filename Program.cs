@@ -7110,14 +7110,3 @@ class Mistake
 // Manual Testing: Manual testing would involve making sure to check for all the error cases (logging in, withdrawing money, depositing money, checking balance, transferring money, low balance, new account, nonexistent account, and so on).
 
 // Automated Testing: Automated testing is a bit more complex. We'll want to automate all the standard scenarios, and we also want to look for some very specific issues, such as race conditions. Ideally, we would be able to set up a closed system with fake accounts and ensure that, even if someone withdraws and deposits money rapidly from different locations, he never gets money or loses money that he shouldn't.
-
-
-//                                                                   CHAPTER 16: MODERATE
-
-
-// Q80: Number Swapper: Write a function to swap a number in place (that is, without temporary variables).
-
-class NumberSwapper
-{
-
-}
